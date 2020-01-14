@@ -2,7 +2,7 @@
  * 
  */
 
-package schooldomain.studentname.connecteddevices.common;
+package schooldomain.neu.pallaksingh.connecteddevices.common;
 
 import org.junit.Before;
 import org.junit.Test;
