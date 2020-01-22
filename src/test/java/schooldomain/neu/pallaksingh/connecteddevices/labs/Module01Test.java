@@ -3,9 +3,15 @@
  */
 package schooldomain.neu.pallaksingh.connecteddevices.labs;
 
+import static org.junit.Assert.assertTrue;
+
 import org.junit.After;
+
 import org.junit.Before;
 import org.junit.Test;
+
+import schooldomain.neu.pallaksingh.connecteddevices.labs.module01.SystemCpuUtilTask;
+import schooldomain.neu.pallaksingh.connecteddevices.labs.module01.SystemMemUtilTask;
 
 /**
  * Test class for all requisite Module01 functionality.
@@ -26,9 +32,14 @@ public class Module01Test
 	/**
 	 * @throws java.lang.Exception
 	 */
+	SystemCpuUtilTask systemCpuUtilTask;
+	SystemMemUtilTask systemMemUtilTask;
+	
 	@Before
 	public void setUp() throws Exception
 	{
+		this.systemCpuUtilTask = new SystemCpuUtilTask();
+		this.systemMemUtilTask = new SystemMemUtilTask();
 	}
 	
 	/**
@@ -37,6 +48,7 @@ public class Module01Test
 	@After
 	public void tearDown() throws Exception
 	{
+		
 	}
 	
 	// test methods
@@ -45,9 +57,19 @@ public class Module01Test
 	 * 
 	 */
 	@Test
-	public void testSomething()
+	public void testSystemCpuUtilTask()
 	{
-//		fail("Not yet implemented");
+		assertTrue("CPU Utilization less than 0", this.systemCpuUtilTask.getSensorData() >= 0);
+		assertTrue("CPU Utilization greater than 100", this.systemCpuUtilTask.getSensorData() <= 100);
+	}
+	
+	@Test
+	public void testSystemMemUtilTask()
+	{
+		assertTrue("Heap Memory Utilization less than 0.0", this.systemMemUtilTask.getSensorData()[0] >= 0.0);
+		assertTrue("Non Heap Memory Utilization greater than 100", this.systemMemUtilTask.getSensorData()[1] <= 100);
+		assertTrue("Heap Memory Utilization greater than 100", this.systemMemUtilTask.getSensorData()[0] <= 100);
+		assertTrue("Non Heap Memory Utilization less than 0.0", this.systemMemUtilTask.getSensorData()[1] >= 0.0);
 	}
 	
 }
