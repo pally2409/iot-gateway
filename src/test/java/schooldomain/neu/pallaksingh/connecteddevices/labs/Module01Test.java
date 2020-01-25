@@ -32,12 +32,15 @@ public class Module01Test
 	/**
 	 * @throws java.lang.Exception
 	 */
+	
+	//
 	SystemCpuUtilTask systemCpuUtilTask;
 	SystemMemUtilTask systemMemUtilTask;
 	
 	@Before
 	public void setUp() throws Exception
 	{
+		// instantiate the tasks
 		this.systemCpuUtilTask = new SystemCpuUtilTask();
 		this.systemMemUtilTask = new SystemMemUtilTask();
 	}
@@ -48,13 +51,17 @@ public class Module01Test
 	@After
 	public void tearDown() throws Exception
 	{
-		
+		// set the reference to the tasks as none to release the resources they're holding
+		this.systemCpuUtilTask = null;
+		this.systemMemUtilTask = null;
+				
 	}
 	
 	// test methods
 	
-	/**
-	 * 
+	/** 
+	 * This test tests whether the CPU utilization percent returned by the corresponding task method
+	 * is greater than 0.0 and less than or equal to 100.0
 	 */
 	@Test
 	public void testSystemCpuUtilTask()
@@ -63,6 +70,10 @@ public class Module01Test
 		assertTrue("CPU Utilization greater than 100", this.systemCpuUtilTask.getSensorData() <= 100);
 	}
 	
+	/** 
+	 * This test tests whether the Memory utilization percent returned by the corresponding task method
+	 * is greater than 0.0 and less than or equal to 100.0
+	 */
 	@Test
 	public void testSystemMemUtilTask()
 	{

@@ -1,5 +1,6 @@
 package schooldomain.neu.pallaksingh.connecteddevices.labs.module01;
 
+// import libraries
 import com.labbenchstudios.iot.common.BaseDeviceApp;
 import com.labbenchstudios.iot.common.DeviceApplicationException;
 
@@ -7,8 +8,14 @@ public class GatewayHandlerApp extends BaseDeviceApp {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		SystemPerformanceAdaptor systemPerformanceAdaptor = new SystemPerformanceAdaptor(5);
+		
+		// instantiate system performance adaptor
+		SystemPerformanceAdaptor systemPerformanceAdaptor = new SystemPerformanceAdaptor(15);
+		
+		// set the system performance adaptor to true
 		systemPerformanceAdaptor.enableAdaptor = true;
+		
+		// start the thread
 		systemPerformanceAdaptor.start();
 				
 	}
