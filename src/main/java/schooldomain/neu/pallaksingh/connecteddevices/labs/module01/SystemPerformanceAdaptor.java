@@ -8,25 +8,72 @@ public class SystemPerformanceAdaptor extends Thread {
 	long rateInSec; //how often the readings should be taken
 	int numReadings; //how many times the readings should be taken
 	boolean enableAdaptor = false; //disable adapter for the SystemPerformanceAdaptor initially
+	boolean success; //success for the adaptor thread
 	
 	//get the logger for the class
 	private final static Logger LOGGER = Logger.getLogger(SystemPerformanceAdaptor.class.getName());
 	
 	
 	//constructor when only provided numReadings, then set rateInSec to default value of 10
-	SystemPerformanceAdaptor(int numReadings) {
+	public SystemPerformanceAdaptor(int numReadings) {
 		this.rateInSec = 10;
 		this.numReadings = numReadings;
 		LOGGER.setLevel(Level.INFO);
+		
+		//log the initial message
+		LOGGER.info("Starting System Performance Adaptor Thread");
 	}
 	
 	//constructor when provided numReadings and rateInSec 
-	SystemPerformanceAdaptor(int rateInSec, int numReadings) {
+	public SystemPerformanceAdaptor(int rateInSec, int numReadings) {
 		this.rateInSec = rateInSec;
 		this.numReadings = numReadings;
 		LOGGER.setLevel(Level.INFO);
+		
+		//log the initial message
+		LOGGER.info("Starting System Performance Adaptor Thread");
 	}
 	
+	//constructor when not provided any parameters, then set rateInSec to 10 and numReadings is set to 15
+	public SystemPerformanceAdaptor() {
+		this.rateInSec = 10;
+		this.numReadings = 15;
+		LOGGER.setLevel(Level.INFO);
+		
+		//log the initial message
+		LOGGER.info("Starting System Performance Adaptor Thread");
+	}
+	
+	//getters and setters
+	public long getRateInSec() {
+		return rateInSec;
+	}
+
+	public void setRateInSec(long rateInSec) {
+		this.rateInSec = rateInSec;
+	}
+
+	public int getNumReadings() {
+		return numReadings;
+	}
+
+	public void setNumReadings(int numReadings) {
+		this.numReadings = numReadings;
+	}
+
+	public boolean isEnableAdaptor() {
+		return enableAdaptor;
+	}
+
+	public void setEnableAdaptor(boolean enableAdaptor) {
+		this.enableAdaptor = enableAdaptor;
+	}
+	
+	public boolean getSuccess() {
+		return this.success;
+	}
+
+
 	//method called when the adapter thread starts 
 	public void run() {
 		
@@ -34,8 +81,12 @@ public class SystemPerformanceAdaptor extends Thread {
 		SystemCpuUtilTask systemCpuUtilTask = new SystemCpuUtilTask();
 		SystemMemUtilTask systemMemUtilTask = new SystemMemUtilTask();
 		
-		//log the initial message
-		LOGGER.info("Starting System Performance Adaptor Thread");
+		//instantiate the adaptor
+		SystemPerformanceAdaptor systemPerformanceAdaptor = new SystemPerformanceAdaptor();
+		
+		if(this.numReadings == 0) {
+			this.success = false;
+		}
 		
 		//run the loop as indicated in the numReadings variable
 		while(this.numReadings > 0) {
@@ -68,11 +119,18 @@ public class SystemPerformanceAdaptor extends Thread {
 				}
 				
 				
+			} else {
+				
+				// adaptor is disabled
+				this.success = false;
 			}
 		}
 		
 		//disable the adaptor once done
 		this.enableAdaptor = false;
+		
+		//the adaptor is done running
+		this.success = true;
 	}
 
 }
