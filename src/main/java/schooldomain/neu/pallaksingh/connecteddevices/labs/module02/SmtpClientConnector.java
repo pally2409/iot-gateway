@@ -47,15 +47,6 @@ public class SmtpClientConnector {
 	}
 
 
-	public String getAuthToken() {
-		return authToken;
-	}
-
-
-	public void setAuthToken(String authToken) {
-		this.authToken = authToken;
-	}
-
 
 	// method for sending mail
 	public boolean publishMessage(String topic, String data) {

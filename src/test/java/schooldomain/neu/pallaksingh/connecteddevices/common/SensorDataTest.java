@@ -1,10 +1,11 @@
 /**
- * 
+ * import package and libraries
  */
 package schooldomain.neu.pallaksingh.connecteddevices.common;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

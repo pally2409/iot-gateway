@@ -1,5 +1,6 @@
 package schooldomain.neu.pallaksingh.connecteddevices.labs.module01;
 
+import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -19,9 +20,6 @@ public class SystemPerformanceAdaptor extends Thread {
 		this.rateInSec = 10;
 		this.numReadings = numReadings;
 		LOGGER.setLevel(Level.INFO);
-		
-		//log the initial message
-		LOGGER.info("Starting System Performance Adaptor Thread");
 	}
 	
 	//constructor when provided numReadings and rateInSec 
@@ -29,9 +27,7 @@ public class SystemPerformanceAdaptor extends Thread {
 		this.rateInSec = rateInSec;
 		this.numReadings = numReadings;
 		LOGGER.setLevel(Level.INFO);
-		
-		//log the initial message
-		LOGGER.info("Starting System Performance Adaptor Thread");
+	
 	}
 	
 	//constructor when not provided any parameters, then set rateInSec to 10 and numReadings is set to 15
@@ -87,6 +83,9 @@ public class SystemPerformanceAdaptor extends Thread {
 		if(this.numReadings == 0) {
 			this.success = false;
 		}
+		
+		//log the initial message
+		LOGGER.info("Starting System Performance Adaptor Thread");
 		
 		//run the loop as indicated in the numReadings variable
 		while(this.numReadings > 0) {

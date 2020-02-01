@@ -23,14 +23,19 @@ public class GatewayHandlerApp extends BaseDeviceApp {
 		systemPerformanceAdaptor.enableAdaptor = false;
 		
 		// start the thread
-		systemPerformanceAdaptor.start();
+		//systemPerformanceAdaptor.start();
 		
 		/*
 		 * MODULE 2
 		 */
 		
+		//instantiate the temperature emulator adaptor
 		TempEmulatorAdaptor tempEmulatorAdaptor = new TempEmulatorAdaptor();
+		
+		//set the system performance adaptor to true
 		tempEmulatorAdaptor.getTempSensorEmulatorTask().setEnableEmulator(true);
+		
+		//start the thread
 		tempEmulatorAdaptor.start();
 		
 		

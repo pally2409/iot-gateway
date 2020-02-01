@@ -7,6 +7,7 @@ package schooldomain.neu.pallaksingh.connecteddevices.common;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -50,6 +51,7 @@ public class ConfigUtilTest
 	@Before
 	public void setUp() throws Exception
 	{
+
 		LOGGER.setLevel(Level.INFO);
 		
 		//instantiate the configUtil

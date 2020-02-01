@@ -193,43 +193,101 @@ public class ConfigUtil {
 						//there are valid key-value pairs
 						return(true);
 					}
-				}	
+				}
+				
+				//if there are no sections 
 				return(false);
 			}
 		} 
+		
+		//if config file is not loaded
 		return(false);
 	}
 	
+	//this method loads the default config file
 	public boolean loadConfig() {
+		
+		//get the absolute file path 
 		File f = new File(this.fileName).getAbsoluteFile();
+		
+		//if the file exists 
 		if(f.exists()) {
+			
+			//try if the configuration is loaded 
 			try {
+				
+				//read the configuration (INI configuration is stored in hierarchical format as section and keys
 				this.config = new HierarchicalINIConfiguration(fileName);
-			} catch (ConfigurationException e) {
+				
+			} 
+			
+			//if there was an error while loading the configuration file
+			catch (ConfigurationException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				
+				//change configFileLoaded to false
+				this.configFileLoaded = false;
+				
+				//return false
 				return false;
 			}
+			
+			//change configFileLoaded to true because loaded properly
 			this.configFileLoaded = true;
+			
+			//return true
 			return true;
-		} else {
+			} 
+		
+		//if file doesn't exist
+		else {
+			
+			//return false
 			return false;
 		}
 	}
 	
+	//this method loads the config file that is sent as the parameter
 	public boolean loadConfig(String fileName) {
+		
+		//get the absolute file path 
 		File f = new File(fileName).getAbsoluteFile();
+		
+		//if the file exists 
 		if(f.exists()) {
+			
+			//try if the configuration is loaded 
 			try {
+				
+				//read the configuration (INI configuration is stored in hierarchical format as section and keys
 				this.config = new HierarchicalINIConfiguration(fileName);
-		} catch (ConfigurationException e) {
+		} 
+			
+			//if there was an error while loading the configuration file
+			catch (ConfigurationException e) {
+		
+			//change configFileLoaded to false
 			this.configFileLoaded = false;
+			
+			//return false
 			return false;
-		}	
+		}
+			
+		//no errors encountered while loading
 		this.configFileLoaded = true;
+		
+		//return true
 		return true;
-		} else {
+		} 
+		
+		//if file does not exist
+		else {
+			
+			//change configFileLoaded to false
 			this.configFileLoaded = false;
+			
+			//return false
 			return false;
 		}	
 	}
