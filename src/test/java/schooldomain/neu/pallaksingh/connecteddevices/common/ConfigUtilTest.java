@@ -1,5 +1,5 @@
 /**
- * 
+ * import packages and libraries
  */
 
 package schooldomain.neu.pallaksingh.connecteddevices.common;

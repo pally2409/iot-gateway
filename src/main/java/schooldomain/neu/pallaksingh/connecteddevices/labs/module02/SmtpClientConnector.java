@@ -1,6 +1,8 @@
+/*
+ * import packages and libraries
+ */
 package schooldomain.neu.pallaksingh.connecteddevices.labs.module02;
 
-//import libraries
 import schooldomain.neu.pallaksingh.connecteddevices.common.ConfigUtil;
 import javax.mail.*;
 import javax.mail.internet.*;

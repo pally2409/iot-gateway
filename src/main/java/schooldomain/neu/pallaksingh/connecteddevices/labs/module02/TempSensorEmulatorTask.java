@@ -1,3 +1,6 @@
+/*
+ * import packages and libraries
+ */
 package schooldomain.neu.pallaksingh.connecteddevices.labs.module02;
 
 import java.io.IOException;
