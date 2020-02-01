@@ -11,7 +11,7 @@ certFile       = ./config/ubidots_cert.pem
 configPath     = ./config
 
 [smtp.cloud]
-host           = Not Set
+host           = smtp.gmail.com
 port           = 465
 fromAddr       = Not Set
 toAddr         = Not Set
