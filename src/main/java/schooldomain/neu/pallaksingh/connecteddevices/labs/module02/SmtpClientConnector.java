@@ -29,25 +29,11 @@ public class SmtpClientConnector {
 	}
 	
 	// getters and setters
+	
+	//get reference to config util
 	public ConfigUtil getConfig() {
 		return config;
 	}
-
-
-	public void setConfig(ConfigUtil config) {
-		this.config = config;
-	}
-
-
-	public String getFromAddr() {
-		return fromAddr;
-	}
-
-
-	public void setFromAddr(String fromAddr) {
-		this.fromAddr = fromAddr;
-	}
-
 
 
 	// method for sending mail

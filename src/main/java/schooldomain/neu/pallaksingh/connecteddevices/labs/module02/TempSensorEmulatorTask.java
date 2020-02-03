@@ -58,6 +58,9 @@ public class TempSensorEmulatorTask {
 		LOGGER.setLevel(Level.INFO);
 	}
 	
+	/*
+	 * empty constructor for keeping the default values
+	 */
 	public TempSensorEmulatorTask() {
 		
 		
