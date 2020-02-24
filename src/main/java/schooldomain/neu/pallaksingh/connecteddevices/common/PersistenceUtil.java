@@ -4,7 +4,6 @@ import redis.clients.jedis.HostAndPort;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisCluster;
 import redis.clients.jedis.JedisPubSub;
-import com.google.common.*;
 
 import java.util.UUID;
 import java.util.logging.Logger;

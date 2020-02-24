@@ -94,7 +94,7 @@ public class DataUtilTest
 	 * @throws IOException 
 	 * This method tests writeSensorDataToFile() of DataUtil class.
 	 * It tests if there is any error in writing the file and if 
-	 * it breaks if the file doesnn't exist.
+	 * it breaks if the file doesn't exist.
 	 * 
 	 */
 	@Test
@@ -202,7 +202,7 @@ public class DataUtilTest
 	/**
 	 * This method tests writeActuatorDataToFile() of DataUtil class.
 	 * It tests if there is any error in writing the file and if 
-	 * it breaks if the file doesnn't exist.
+	 * it breaks if the file doesn't exist.
 	 */
 	@Test
 	public void testwriteActuatorDataToFile()
