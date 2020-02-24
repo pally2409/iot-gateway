@@ -3,6 +3,8 @@
  */
 package schooldomain.neu.pallaksingh.connecteddevices.labs;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -48,12 +50,18 @@ public class Module05Test
 	// test methods
 	
 	/**
-	 * 
+	 * This method tests the start() method of GatewayDataManager
 	 */
 	@Test
-	public void testSomething()
+	public void testStart()
 	{
-//		fail("Not yet implemented");
+		//run only on system
+		if(this.gatewayDataManager.pUtil.jedis_sensor.isConnected()) {
+			
+			//check if it runs appropriately
+			assertEquals(this.gatewayDataManager.start(), true);
+		}
+	
 	}
 	
 }

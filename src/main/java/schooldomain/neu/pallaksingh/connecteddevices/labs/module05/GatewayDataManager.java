@@ -14,13 +14,29 @@ public class GatewayDataManager {
 	PersistenceUtil pUtil = new PersistenceUtil(sensorDataListener);
 	
 	//this method starts the listener to listen for SensorData
-	public void start() {
+	public boolean start() {
 		
-		//pass the actuatorDataListener reference to the PersistanceUtil manager to register for listening
-		Thread sensorDataListenerThread = pUtil.registerSensorDataDbmsListener();
+		//try to run the thread
+		try {
+			
+			//pass the actuatorDataListener reference to the PersistanceUtil manager to register for listening
+			Thread sensorDataListenerThread = pUtil.registerSensorDataDbmsListener();
+			
+			//start the thread
+			sensorDataListenerThread.start();
 		
-		//start the thread
-		sensorDataListenerThread.start();
+			//if error occured 
+		} catch(Exception e) {
+			
+			e.printStackTrace();
+			
+			//return False
+			return false; 
+		}
+		
+		//if runs successfully
+		return true;
+		
 	
 		
 	}
