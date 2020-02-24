@@ -63,8 +63,8 @@ public class SensorDataListenerTest
 	@Test
 	public void testONPMessage()
 	{
-		//when running on system try
-		try {
+		//run only when running on system  
+		if(this.sensorDataListener.r_sensor.isConnected()) {
 			
 			//send some valid message to the listener
 			this.sensorDataListener.onPMessage("__keyspace@0__:*", "__keyspace@0__:sensorDatae19e3d04-dbc3-4d81-a0bc-6f045d275af6", "set");
@@ -74,14 +74,7 @@ public class SensorDataListenerTest
 			assertEquals(this.sensorDataListener.actuatorData.getCommand(), "DECREASE TEMP");
 			assertEquals(this.sensorDataListener.actuatorData.getValue(), "UP");	
 		} 
-		
-		// if running on pipeline
-		catch(Exception e) {
-			
-			e.printStackTrace();
-		}
-		
-	
+
 	}
 
 	

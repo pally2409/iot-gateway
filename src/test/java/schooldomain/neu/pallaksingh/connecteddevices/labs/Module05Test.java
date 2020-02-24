@@ -7,6 +7,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import schooldomain.neu.pallaksingh.connecteddevices.labs.module05.GatewayDataManager;
+
 /**
  * Test class for all requisite Module05 functionality.
  * 
@@ -21,6 +23,9 @@ import org.junit.Test;
  */
 public class Module05Test
 {
+	//initialize GatewayDataManager
+	GatewayDataManager gatewayDataManager = new GatewayDataManager();
+	
 	// setup methods
 	
 	/**
@@ -29,6 +34,7 @@ public class Module05Test
 	@Before
 	public void setUp() throws Exception
 	{
+		//instantiate
 	}
 	
 	/**

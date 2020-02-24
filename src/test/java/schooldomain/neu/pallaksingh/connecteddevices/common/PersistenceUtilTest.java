@@ -68,8 +68,8 @@ public class PersistenceUtilTest
 	@Test
 	public void testWriteActuatorDataToDbms() {
 		
-		//when running on system try 
-		try {
+		//run only when running on system  
+		if(this.persistenceUtil.jedis_actuator.isConnected()) {
 			//Create ActuatorData instance
 			ActuatorData actuatorData = new ActuatorData();
 			
@@ -81,15 +81,7 @@ public class PersistenceUtilTest
 			
 			//write to redis and check if it returns false
 			assertEquals(false, this.persistenceUtil.writeActuatorDataToDbms(actuatorData));
-			
-		//when running on pipeline
-		} catch(Exception e) {
-			
-			//print exception
-			e.printStackTrace();
 		}
-		
-		
 	}
 	
 	/**
@@ -100,8 +92,8 @@ public class PersistenceUtilTest
 	@Test
 	public void testWriteSensorDataToDbms() {
 		
-		//when running on system try
-		try {
+		//run only when running on system  
+		if(this.persistenceUtil.jedis_actuator.isConnected()) {
 			
 			//Create ActuatorData instance
 			SensorData sensorData = new SensorData();
@@ -115,14 +107,7 @@ public class PersistenceUtilTest
 			//write to redis and check if it returns false
 			assertEquals(false, this.persistenceUtil.writeSensorDataToDbms(sensorData));
 			
-		//when running on pipeline
-		} catch(Exception e) {
-			
-			//print exception
-			e.printStackTrace();
 		}
-		
-	
 	}
 	
 	/**
@@ -132,19 +117,15 @@ public class PersistenceUtilTest
 	@Test
 	public void testRegisterActuatorDataDbmsListener() {
 		
-		//when running on system try
-		try {
+		//run only when running on system  
+		if(this.persistenceUtil.jedis_actuator.isConnected()) {
 			
 			//check if it returns a thread
 			assertEquals(this.persistenceUtil.registerActuatorDataDbmsListener().getClass(), Thread.class);
 		
 			//when running on pipeline
-		} catch(Exception e) {
-			
-			e.printStackTrace();
-		}
-		
-		
+		} 
+
 	}
 	
 	/**
@@ -154,18 +135,14 @@ public class PersistenceUtilTest
 	@Test
 	public void testRegisterSensorDataDbmsListener() {
 		
-		//when running on system, try
-		try {
+		//run only when running on system  
+		if(this.persistenceUtil.jedis_actuator.isConnected()) {
 			
 			//check if it returns a thread
 			assertEquals(this.persistenceUtil.registerSensorDataDbmsListener().getClass(), Thread.class);
 			
 			//when running on pipeline 
-		} catch(Exception e) {
-			
-			e.printStackTrace();
 		}
-		
 		
 	}
 	
