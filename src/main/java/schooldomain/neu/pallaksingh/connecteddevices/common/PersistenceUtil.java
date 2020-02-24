@@ -14,7 +14,7 @@ public class PersistenceUtil {
 	DataUtil dataUtil = new DataUtil();
 	
 	//instantiate redis client for both sensor and actuator
-	Jedis jedis_sensor;
+	public Jedis jedis_sensor;
 	Jedis jedis_actuator;
 	
 	//instantiate listeners

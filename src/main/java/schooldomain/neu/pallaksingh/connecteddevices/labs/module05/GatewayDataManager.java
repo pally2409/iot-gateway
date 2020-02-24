@@ -8,10 +8,10 @@ import schooldomain.neu.pallaksingh.connecteddevices.common.SensorDataListener;
 public class GatewayDataManager {
 	
 	//instantiate SensorDataListener
-	SensorDataListener sensorDataListener = new SensorDataListener();
+	public SensorDataListener sensorDataListener = new SensorDataListener();
 	
 	//instantiate PersistenceUtil
-	PersistenceUtil pUtil = new PersistenceUtil(sensorDataListener);
+	public PersistenceUtil pUtil = new PersistenceUtil(sensorDataListener);
 	
 	//this method starts the listener to listen for SensorData
 	public boolean start() {
