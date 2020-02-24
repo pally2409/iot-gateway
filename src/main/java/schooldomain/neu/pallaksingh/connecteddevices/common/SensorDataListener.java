@@ -1,5 +1,6 @@
 // import libraries and packages
 package schooldomain.neu.pallaksingh.connecteddevices.common;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import redis.clients.jedis.HostAndPort;
@@ -53,8 +54,18 @@ public class SensorDataListener extends JedisPubSub {
         sensorData = dUtil.toSensorDataFromJson(s);
         
         //log the readings
-        String loggerText = "New Sensor Readings" + "\n" + sensorData.toString() + "\n" + "-----------------------------------";
+        String loggerText = "---------------------------------------------- \n New Sensor Readings";
         LOGGER.info(loggerText);
+        
+        try {
+        	
+        	//write to local filesystem
+			dUtil.writeSensorDataToFile(sensorData);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         
         //set the name
         this.actuatorData.setName("Temperature Actuator");
