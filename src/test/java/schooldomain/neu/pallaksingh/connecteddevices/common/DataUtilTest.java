@@ -132,6 +132,9 @@ public class DataUtilTest
 		//First sensorData 
 		sensorData1.setName("Temperature Sensor");
 		sensorData1.addValue(9);
+		
+		//set timestamp to None because it is the only thing that will be different
+		sensorData1.timestamp = "None";
 						
 		//Create actuatorData
 		SensorData sensorData2 = new SensorData();
@@ -139,6 +142,9 @@ public class DataUtilTest
 		//Second sensorData
 		sensorData2.setName("Temperature Sensor");
 		sensorData2.addValue(9);
+		
+		//set timestamp to None because it is the only thing that will be different
+		sensorData2.timestamp = "None";
 						
 		//Get their JSON strings 
 		String jsonStr1 = this.dataUtil.toJsonFromSensorData(sensorData1);
