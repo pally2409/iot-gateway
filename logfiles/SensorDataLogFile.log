@@ -1,0 +1,17 @@
+Feb 23, 2020 5:45:50 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Temperature Sensor",
+  "timestamp": "2020-02-23 17:45:50.183000"
+}
+Feb 23, 2020 5:45:50 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeActuatorDataToFile
+INFO: {
+  "name": "Temperature Sensor",
+  "command": "INCREASE",
+  "value": "UP"
+}

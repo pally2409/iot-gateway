@@ -13,13 +13,32 @@ public class SensorData {
 	float maxValue = -99;
 	float minValue = 99;
 	String sensorName = "Not Set";
-	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"); 
-	LocalDateTime now = LocalDateTime.now();
-	public String timestamp = dtf.format(now);
+	public String timestamp = "None";
 	
+
+	
+	public SensorData() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public SensorData(float currentValue, float average, int totalCount, float totalValue, float maxValue,
+			float minValue, String sensorName, String timestamp) {
+		super();
+		this.currentValue = currentValue;
+		this.average = average;
+		this.totalCount = totalCount;
+		this.totalValue = totalValue;
+		this.maxValue = maxValue;
+		this.minValue = minValue;
+		this.sensorName = sensorName;
+		this.timestamp = timestamp;
+	}
 
 	//add value to the sensor data
 	public void addValue(float val) {
+		
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS"); 
 		
 		//if value passed is not null
 		if(new Float(val).equals(null) != true) {
@@ -46,6 +65,8 @@ public class SensorData {
 			if((this.totalCount == 1) || (val < this.minValue)) {
 				this.minValue = val;
 			}
+			
+			this.average = this.getAverageValue();
 		} 
 	}
 	
@@ -114,5 +135,24 @@ public class SensorData {
 		}
 		
 	}
+
+	@Override
+	public String toString() {
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append("{\"Current Value\": " + "\"" + this.currentValue + "\"" + ",");
+		sb.append("\"Average\":" + this.average + ",");
+		sb.append("\"Samples\":" + this.totalCount + ",");
+		sb.append("\"Min Val\":" + this.minValue + ",");
+		sb.append("\"Max Val\":" + this.maxValue + ",");
+		sb.append("\"Total Value\":" + this.totalValue + ",");
+		sb.append("\"Sensor Name\":" + "\"" + this.sensorName + "\"" + ",");
+		sb.append("\"Timestamp\": " + "\"" + this.timestamp + "\"}");
+		
+		return sb.toString();
+	
+	}
+	
+	
 	
 }
