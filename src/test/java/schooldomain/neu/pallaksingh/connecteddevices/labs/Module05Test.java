@@ -26,7 +26,7 @@ import schooldomain.neu.pallaksingh.connecteddevices.labs.module05.GatewayDataMa
 public class Module05Test
 {
 	//initialize GatewayDataManager
-	GatewayDataManager gatewayDataManager = new GatewayDataManager();
+	GatewayDataManager gatewayDataManager;
 	
 	// setup methods
 	
@@ -37,6 +37,7 @@ public class Module05Test
 	public void setUp() throws Exception
 	{
 		//instantiate
+		this.gatewayDataManager = new GatewayDataManager();
 	}
 	
 	/**
@@ -45,12 +46,14 @@ public class Module05Test
 	@After
 	public void tearDown() throws Exception
 	{
+		//set to null to release any resources 
+		this.gatewayDataManager = null;
 	}
 	
 	// test methods
 	
 	/**
-	 * This method tests the start() method of GatewayDataManager
+	 * This method tests the start() method of GatewayDataManager 
 	 */
 	@Test
 	public void testStart()

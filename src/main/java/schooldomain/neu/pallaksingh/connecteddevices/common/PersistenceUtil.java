@@ -31,8 +31,8 @@ public class PersistenceUtil {
 		try {
 			
 			//initialize redis for reading and writing sensor and actuator data
-			this.jedis_actuator = new Jedis(new HostAndPort("pallypi.lan", 6379));
-			this.jedis_sensor = new Jedis(new HostAndPort("pallypi.lan", 6379));
+			this.jedis_actuator = new Jedis(new HostAndPort("172.20.10.11", 6379));
+			this.jedis_sensor = new Jedis(new HostAndPort("172.20.10.11", 6379));
 			
 			//select databases for corresponding data
 			jedis_sensor.select(0);
@@ -54,8 +54,8 @@ public class PersistenceUtil {
 		try {
 			
 			//initialize redis for reading and writing sensor and actuator data
-			this.jedis_actuator = new Jedis(new HostAndPort("pallypi.lan", 6379));
-			this.jedis_sensor = new Jedis(new HostAndPort("pallypi.lan", 6379));
+			this.jedis_actuator = new Jedis(new HostAndPort("172.20.10.11", 6379));
+			this.jedis_sensor = new Jedis(new HostAndPort("172.20.10.11", 6379));
 			
 			//select databases for corresponding data
 			jedis_sensor.select(0);
@@ -81,8 +81,8 @@ public class PersistenceUtil {
 		try {
 			
 			//initialize redis for reading and writing sensor and actuator data
-			this.jedis_actuator = new Jedis(new HostAndPort("pallypi.lan", 6379));
-			this.jedis_sensor = new Jedis(new HostAndPort("pallypi.lan", 6379));
+			this.jedis_actuator = new Jedis(new HostAndPort("172.20.10.11", 6379));
+			this.jedis_sensor = new Jedis(new HostAndPort("172.20.10.11", 6379));
 			
 			//select databases for corresponding data
 			jedis_sensor.select(0);

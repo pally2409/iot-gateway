@@ -1,0 +1,11 @@
+Feb 24, 2020 2:59:26 AM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 45.449028,
+  "average": 45.32958,
+  "totalCount": 8,
+  "totalValue": 362.63663,
+  "maxValue": 45.449028,
+  "minValue": 45.26526,
+  "sensorName": "Temperature Sensor",
+  "timestamp": "2020-02-24 02:59:28.537573"
+}

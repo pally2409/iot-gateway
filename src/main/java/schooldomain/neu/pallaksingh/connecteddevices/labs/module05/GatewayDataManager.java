@@ -36,9 +36,6 @@ public class GatewayDataManager {
 		
 		//if runs successfully
 		return true;
-		
-	
-		
 	}
 
 }

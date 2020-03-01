@@ -1,66 +1,110 @@
-Feb 24, 2020 2:55:55 AM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+Feb 29, 2020 5:35:54 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
 INFO: {
-  "currentValue": 45.577667,
-  "average": 45.577667,
+  "currentValue": 27.402565,
+  "average": 27.402565,
   "totalCount": 1,
-  "totalValue": 45.577667,
-  "maxValue": 45.577667,
-  "minValue": 45.577667,
+  "totalValue": 27.402565,
+  "maxValue": 27.402565,
+  "minValue": 27.402565,
   "sensorName": "Temperature Sensor",
-  "timestamp": "2020-02-24 02:55:57.394655"
+  "timestamp": "2020-02-29 17:35:54.112470"
 }
-Feb 24, 2020 2:56:00 AM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+Feb 29, 2020 5:35:59 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
 INFO: {
-  "currentValue": 45.540916,
-  "average": 45.55929,
+  "currentValue": 27.347435,
+  "average": 27.375,
   "totalCount": 2,
-  "totalValue": 91.11858,
-  "maxValue": 45.577667,
-  "minValue": 45.540916,
+  "totalValue": 54.75,
+  "maxValue": 27.402565,
+  "minValue": 27.347435,
   "sensorName": "Temperature Sensor",
-  "timestamp": "2020-02-24 02:56:02.403625"
+  "timestamp": "2020-02-29 17:35:59.120511"
 }
-Feb 24, 2020 2:56:05 AM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+Feb 29, 2020 5:36:04 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
 INFO: {
-  "currentValue": 45.55929,
-  "average": 45.55929,
+  "currentValue": 27.659847,
+  "average": 27.46995,
   "totalCount": 3,
-  "totalValue": 136.67787,
-  "maxValue": 45.577667,
-  "minValue": 45.540916,
+  "totalValue": 82.40985,
+  "maxValue": 27.659847,
+  "minValue": 27.347435,
   "sensorName": "Temperature Sensor",
-  "timestamp": "2020-02-24 02:56:07.408981"
+  "timestamp": "2020-02-29 17:36:04.128960"
 }
-Feb 24, 2020 2:56:10 AM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+Feb 29, 2020 5:36:09 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
 INFO: {
-  "currentValue": 45.614426,
-  "average": 45.573074,
+  "currentValue": 27.659847,
+  "average": 27.517424,
   "totalCount": 4,
-  "totalValue": 182.2923,
-  "maxValue": 45.614426,
-  "minValue": 45.540916,
+  "totalValue": 110.069695,
+  "maxValue": 27.659847,
+  "minValue": 27.347435,
   "sensorName": "Temperature Sensor",
-  "timestamp": "2020-02-24 02:56:12.416551"
+  "timestamp": "2020-02-29 17:36:09.137314"
 }
-Feb 24, 2020 2:56:15 AM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+Feb 29, 2020 5:36:14 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
 INFO: {
-  "currentValue": 45.504158,
-  "average": 45.55929,
+  "currentValue": 27.84362,
+  "average": 27.582663,
   "totalCount": 5,
-  "totalValue": 227.79646,
-  "maxValue": 45.614426,
-  "minValue": 45.504158,
+  "totalValue": 137.91331,
+  "maxValue": 27.84362,
+  "minValue": 27.347435,
   "sensorName": "Temperature Sensor",
-  "timestamp": "2020-02-24 02:56:17.426062"
+  "timestamp": "2020-02-29 17:36:14.145655"
 }
-Feb 24, 2020 2:56:28 AM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+Feb 29, 2020 5:36:19 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
 INFO: {
-  "currentValue": 45.449028,
-  "average": 45.449028,
-  "totalCount": 1,
-  "totalValue": 45.449028,
-  "maxValue": 45.449028,
-  "minValue": 45.449028,
+  "currentValue": 27.898752,
+  "average": 27.635345,
+  "totalCount": 6,
+  "totalValue": 165.81207,
+  "maxValue": 27.898752,
+  "minValue": 27.347435,
   "sensorName": "Temperature Sensor",
-  "timestamp": "2020-02-24 02:56:30.593113"
+  "timestamp": "2020-02-29 17:36:19.150441"
+}
+Feb 29, 2020 5:36:24 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 27.953884,
+  "average": 27.680851,
+  "totalCount": 7,
+  "totalValue": 193.76595,
+  "maxValue": 27.953884,
+  "minValue": 27.347435,
+  "sensorName": "Temperature Sensor",
+  "timestamp": "2020-02-29 17:36:24.158751"
+}
+Feb 29, 2020 5:36:29 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 28.24792,
+  "average": 27.751734,
+  "totalCount": 8,
+  "totalValue": 222.01387,
+  "maxValue": 28.24792,
+  "minValue": 27.347435,
+  "sensorName": "Temperature Sensor",
+  "timestamp": "2020-02-29 17:36:29.169616"
+}
+Feb 29, 2020 5:36:34 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 28.358183,
+  "average": 27.819117,
+  "totalCount": 9,
+  "totalValue": 250.37206,
+  "maxValue": 28.358183,
+  "minValue": 27.347435,
+  "sensorName": "Temperature Sensor",
+  "timestamp": "2020-02-29 17:36:34.178061"
+}
+Feb 29, 2020 5:36:39 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 28.523579,
+  "average": 27.889563,
+  "totalCount": 10,
+  "totalValue": 278.89563,
+  "maxValue": 28.523579,
+  "minValue": 27.347435,
+  "sensorName": "Temperature Sensor",
+  "timestamp": "2020-02-29 17:36:39.186463"
 }

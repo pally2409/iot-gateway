@@ -77,7 +77,7 @@ public class PersistenceUtilTest
 			assertEquals(true, this.persistenceUtil.writeActuatorDataToDbms(actuatorData));
 			
 			//add an invalid port to the jedisActuator
-			this.persistenceUtil.jedis_actuator = new Jedis(new HostAndPort("pallypi.lan", 6890));
+			this.persistenceUtil.jedis_actuator = new Jedis(new HostAndPort("172.20.10.11", 6890));
 			
 			//write to redis and check if it returns false
 			assertEquals(false, this.persistenceUtil.writeActuatorDataToDbms(actuatorData));
@@ -102,7 +102,7 @@ public class PersistenceUtilTest
 			assertEquals(true, this.persistenceUtil.writeSensorDataToDbms(sensorData));
 			
 			//add an invalid port to the jedisActuator
-			this.persistenceUtil.jedis_sensor = new Jedis(new HostAndPort("pallypo.lan", 6890));
+			this.persistenceUtil.jedis_sensor = new Jedis(new HostAndPort("172.20.10.11", 6890));
 			
 			//write to redis and check if it returns false
 			assertEquals(false, this.persistenceUtil.writeSensorDataToDbms(sensorData));

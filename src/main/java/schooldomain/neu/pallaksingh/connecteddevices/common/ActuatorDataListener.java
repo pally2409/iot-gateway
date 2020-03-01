@@ -7,7 +7,7 @@ import redis.clients.jedis.JedisPubSub;
 public class ActuatorDataListener extends JedisPubSub {
 	
 	//instantiate redis client for reading data on the listener
-		Jedis r_actuator = new Jedis(new HostAndPort("pallypi.lan", 6379));
+		Jedis r_actuator = new Jedis(new HostAndPort("172.20.10.11", 6379));
 		
 		public ActuatorDataListener() {
 			super();

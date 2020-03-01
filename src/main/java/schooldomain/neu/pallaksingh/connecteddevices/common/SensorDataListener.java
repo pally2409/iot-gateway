@@ -11,7 +11,7 @@ import schooldomain.neu.pallaksingh.connecteddevices.labs.module01.SystemPerform
 public class SensorDataListener extends JedisPubSub {
 	
 	//instantiate redis client for reading data on the listener
-	Jedis r_sensor = new Jedis(new HostAndPort("pallypi.lan", 6379));
+	Jedis r_sensor = new Jedis(new HostAndPort("172.20.10.11", 6379));
 	
 	//get the logger for the class
 	private final static Logger LOGGER = Logger.getLogger(SensorDataListener.class.getName());
@@ -46,6 +46,8 @@ public class SensorDataListener extends JedisPubSub {
 		
 		//get the value stored at the key present at the channel section of the keyspace notification
 		String s = this.r_sensor.get(channel.split(":",-1)[1]);
+		
+		System.out.println(channel.split(":",-1)[1]);
         
 		//instantiate sensorData
 		SensorData sensorData = new SensorData();
@@ -54,7 +56,7 @@ public class SensorDataListener extends JedisPubSub {
         sensorData = dUtil.toSensorDataFromJson(s);
         
         //log the readings
-        String loggerText = "---------------------------------------------- \n New Sensor Readings";
+        String loggerText = "---------------------------------------------- \nNew Sensor Readings";
         LOGGER.info(loggerText);
         
         try {
@@ -99,10 +101,7 @@ public class SensorDataListener extends JedisPubSub {
         	pUtil.writeActuatorDataToDbms(this.actuatorData);
         	
         }
-        
-      
-        
-        
+ 
     }
 
 }
