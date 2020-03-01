@@ -32,24 +32,21 @@ import schooldomain.neu.pallaksingh.connecteddevices.labs.module06.MqttClientCon
 public class Module06Test
 {
 	
-	//define MqttClientConnector
+	//Initialize MqttClientConnector
 	MqttClientConnector mqttClientConnector;
 	
-	//get the logger for the class
+	//Get the logger for the class
 	private final static Logger LOGGER = Logger.getLogger(Module06Test.class.getName());
 	
 	// setup methods
-	
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception
 	{
-		
-		//initialize MqttClientConnector
-		this.mqttClientConnector = new MqttClientConnector();
-		
+		//Instantiate MqttClientConnector
+		this.mqttClientConnector = new MqttClientConnector();	
 	}
 	
 	/**
@@ -58,27 +55,26 @@ public class Module06Test
 	@After
 	public void tearDown() throws Exception
 	{
-		//initialize MqttClientConnector
+		//Set the reference to MqttClientConnector to NULL to release any resources 
 		this.mqttClientConnector = null;	
 	}
 	
 	// test methods
-	
 	/**
 	 * This method tests the connect() method of the MqttClientConnector class
 	 * It checks whether the program breaks if the host and port are invalid
-	 * and if it runs properly with valid host and port 
+	 * and if there is successful connection with valid host and port 
 	 */
 	@Test
 	public void testConnect()
 	{
-		//connect with valid values of host and port
+		//Connect with valid values of host and port
 		this.mqttClientConnector.connect("tcp://broker.mqttdashboard.com:1883", "Subscriber_Pallak");
 		
-		//get the client reference of MqttClientConnector
+		//Get the client reference of MqttClientConnector
 		MqttClient client = this.mqttClientConnector.getClient();
 		
-		//sleep for one second to let it connect
+		//Sleep for one second to let it connect
 		try {
 			Thread.sleep(1);
 		} catch (InterruptedException e) {
@@ -86,16 +82,16 @@ public class Module06Test
 			e.printStackTrace();
 		}
 		
-		//check whether the client is connected
+		//Assert true if the client is connected with valid host and port values
 		assertEquals(client.isConnected(), true);
 		
-		//connect with invalid values of host and port
+		//Connect with invalid values of host and port
 		this.mqttClientConnector.connect("tcp://broker.mqttdashboardd.com:1883", "Subscriber_Pallak");
 				
-		//get the client reference of MqttClientConnector
+		//Get the client reference of MqttClientConnector
 		client = this.mqttClientConnector.getClient();
 				
-		//sleep for one second to let it connect
+		//Sleep for one second to let it connect
 		try {
 			Thread.sleep(1);
 		} catch (InterruptedException e) {
@@ -103,12 +99,9 @@ public class Module06Test
 			e.printStackTrace();
 		}
 				
-		//check whether the client is connected
-		assertEquals(client.isConnected(), false);
-		
+		//Assert false with invalid host and port values
+		assertEquals(client.isConnected(), false);	
 	}
-	
-	
 	
 	/**
 	 * This method tests the publishActuatorData() method of the MqttClientConnector class
@@ -117,13 +110,13 @@ public class Module06Test
 	@Test
 	public void testPublishActuatorData()
 	{
-		//connect with valid values of host and port
+		//Connect with valid values of host and port
 		this.mqttClientConnector.connect("tcp://broker.mqttdashboard.com:1883", "Subscriber_Pallak");
 		
-		//get the client reference of MqttClientConnector
+		//Get the client reference of MqttClientConnector
 		MqttClient client = this.mqttClientConnector.getClient();
 		
-		//sleep for one second to let it connect
+		//Sleep for one second to let it connect
 		try {
 			Thread.sleep(1);
 		} catch (InterruptedException e) {
@@ -131,19 +124,19 @@ public class Module06Test
 			e.printStackTrace();
 		}
 		
-		//create actuatorData
+		//Create actuatorData
 		ActuatorData actuatorData = new ActuatorData();
 		
-		//add some command
+		//Add some command
 		actuatorData.setCommand("INCREASE");
 		
-		//check whether the client can publish when connected
+		//Assert true for when the client can publish when connected
 		assertEquals(this.mqttClientConnector.publishActuatorData(actuatorData, 2), true);
 		
-		//connect with invalid values of host and port
+		//Connect with invalid values of host and port
 		this.mqttClientConnector.connect("tcp://broker.mqttdashboardd.com:1883", "Subscriber_Pallak");
 				
-		//sleep for one second to let it connect
+		//Sleep for one second to let it connect
 		try {
 			Thread.sleep(1);
 		} catch (InterruptedException e) {
@@ -151,9 +144,8 @@ public class Module06Test
 			e.printStackTrace();
 		}
 				
-		//check whether the client can publish when not connected
+		//Assert false for failure to publish with no connection
 		assertEquals(this.mqttClientConnector.publishActuatorData(actuatorData, 2), false);
-		
 	}
 	
 	/**
@@ -163,13 +155,13 @@ public class Module06Test
 	@Test
 	public void testPublishSensorData()
 	{
-		//connect with valid values of host and port
+		//Connect with valid values of host and port
 		this.mqttClientConnector.connect("tcp://broker.mqttdashboard.com:1883", "Subscriber_Pallak");
 		
-		//get the client reference of MqttClientConnector
+		//Get the client reference of MqttClientConnector
 		MqttClient client = this.mqttClientConnector.getClient();
 		
-		//sleep for one second to let it connect
+		//Sleep for one second to let it connect
 		try {
 			Thread.sleep(1);
 		} catch (InterruptedException e) {
@@ -177,19 +169,19 @@ public class Module06Test
 			e.printStackTrace();
 		}
 		
-		//create sensorData
+		//Create sensorData
 		SensorData sensorData = new SensorData();
 		
-		//add some value
+		//Add some value
 		sensorData.addValue(9);
 		
-		//check whether the client can publish when connected
+		//Assert true for when the client can publish when connected
 		assertEquals(this.mqttClientConnector.publishSensorData(sensorData, 2), true);
 		
-		//connect with invalid values of host and port
+		//Connect with invalid values of host and port
 		this.mqttClientConnector.connect("tcp://broker.mqttdashboardd.com:1883", "Subscriber_Pallak");
 				
-		//sleep for one second to let it connect
+		//Sleep for one second to let it connect
 		try {
 			Thread.sleep(1);
 		} catch (InterruptedException e) {
@@ -197,9 +189,8 @@ public class Module06Test
 			e.printStackTrace();
 		}
 				
-		//check whether the client can publish when not connected
+		//Assert false for failure to publish with no connection
 		assertEquals(this.mqttClientConnector.publishSensorData(sensorData, 2), false);
-		
 	}
 	
 	/**
@@ -209,13 +200,13 @@ public class Module06Test
 	@Test
 	public void testSubscribeToSensorData()
 	{
-		//connect with valid values of host and port
+		//Connect with valid values of host and port
 		this.mqttClientConnector.connect("tcp://broker.mqttdashboard.com:1883", "Subscriber_Pallak");
 		
-		//get the client reference of MqttClientConnector
+		//Get the client reference of MqttClientConnector
 		MqttClient client = this.mqttClientConnector.getClient();
 		
-		//sleep for one second to let it connect
+		//Sleep for one second to let it connect
 		try {
 			Thread.sleep(1);
 		} catch (InterruptedException e) {
@@ -223,13 +214,13 @@ public class Module06Test
 			e.printStackTrace();
 		}
 		
-		//check whether the client can subscribe when connected
+		//Assert true for when the client can subscribe when connected
 		assertEquals(this.mqttClientConnector.subscribeToSensorData(2), true);
 		
-		//connect with invalid values of host and port
+		//Connect with invalid values of host and port
 		this.mqttClientConnector.connect("tcp://broker.mqttdashboardd.com:1883", "Subscriber_Pallak");
 				
-		//sleep for one second to let it connect
+		//Sleep for one second to let it connect
 		try {
 			Thread.sleep(1);
 		} catch (InterruptedException e) {
@@ -237,9 +228,8 @@ public class Module06Test
 			e.printStackTrace();
 		}
 				
-		//check whether the client can publish when not connected
-		assertEquals(this.mqttClientConnector.subscribeToSensorData(2), false);
-		
+		//Assert false for failure to subscribe with no connection
+		assertEquals(this.mqttClientConnector.subscribeToSensorData(2), false);	
 	}	
 	
 	/**
@@ -249,10 +239,10 @@ public class Module06Test
 	@Test
 	public void testSubscribeToActuatorData()
 	{
-		//connect with valid values of host and port
+		//Connect with valid values of host and port
 		this.mqttClientConnector.connect("tcp://broker.mqttdashboard.com:1883", "Subscriber_Pallak");
 		
-		//get the client reference of MqttClientConnector
+		//Get the client reference of MqttClientConnector
 		MqttClient client = this.mqttClientConnector.getClient();
 		
 		//sleep for one second to let it connect
@@ -263,13 +253,13 @@ public class Module06Test
 			e.printStackTrace();
 		}
 		
-		//check whether the client can subscribe when connected
+		//Assert true for when the client can subscribe when connected
 		assertEquals(this.mqttClientConnector.subscribeToActuatorData(2), true);
 		
 		//connect with invalid values of host and port
 		this.mqttClientConnector.connect("tcp://broker.mqttdashboardd.com:1883", "Subscriber_Pallak");
 				
-		//sleep for one second to let it connect
+		//Sleep for one second to let it connect
 		try {
 			Thread.sleep(1);
 		} catch (InterruptedException e) {
@@ -277,9 +267,7 @@ public class Module06Test
 			e.printStackTrace();
 		}
 				
-		//check whether the client can publish when not connected
-		assertEquals(this.mqttClientConnector.subscribeToActuatorData(2), false);
-		
+		//Assert false for failure to publish with no connection
+		assertEquals(this.mqttClientConnector.subscribeToActuatorData(2), false);	
 	}	
-	
 }

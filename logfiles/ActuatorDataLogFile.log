@@ -1,4 +1,4 @@
-Feb 23, 2020 7:57:13 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeActuatorDataToFile
+Feb 29, 2020 2:33:13 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeActuatorDataToFile
 INFO: {
   "name": "Temperature Sensor",
   "command": "INCREASE",

@@ -1,3 +1,4 @@
+//Import libraries and packages
 package schooldomain.neu.pallaksingh.connecteddevices.labs.module06;
 import java.util.logging.Logger;
 
@@ -19,178 +20,189 @@ import schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil;
 import schooldomain.neu.pallaksingh.connecteddevices.common.SensorData;
 import schooldomain.neu.pallaksingh.connecteddevices.labs.module01.SystemPerformanceAdaptor;
 
+/*
+ * MqttClientConnector class provides abstraction for all MQTT related tasks such as
+   subscribing, publishing various Sensor Data. It also holds the callback methods
+   for when message is received, connection is created
+ */
 public class MqttClientConnector implements MqttCallback {
 	
-	//initialize MqttClient
+	//Initialize MqttClient
 	MqttClient client;
 	
-	//initialize DataUtil
+	//Initialize DataUtil
 	DataUtil dUtil = new DataUtil();
 	
-	//get the logger for the class
+	//Get the logger for the class
 	private final static Logger LOGGER = Logger.getLogger(MqttClientConnector.class.getName());
 		
-	public MqttClientConnector() {
-		
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
-	//this method returns the reference to the MqttClient 
+	//This method returns the reference to the MqttClient 
 	public MqttClient getClient() {
 		
 		return this.client;
 	}
 	
-	//this method connects to the host with the clientID provided
+	//This method connects to the host with the clientID provided
 	public void connect(String host, String clientID) {
 		
-		//initialize MqttClient 
+		//Try to set up the Mqtt Connection
 		try {
 			
-			//set the connection options
+			//Set the connection options
 			MqttConnectOptions conOpt = new MqttConnectOptions();
+			
+			//Refresh the session
 			conOpt.setCleanSession(true);
 			
-			//initialize client
+			//Initialize client
 			this.client = new MqttClient(host, clientID, new MemoryPersistence());
 			
-			//set the callback for the client to this class, as it holds all the callback functions
+			//Set the callback for the client to this class, as it holds all the callback functions
 			this.client.setCallback(this);
 			
-			//set the options for the client
+			//Set the options for the client
 			this.client.connect(conOpt);
-					
+			
+			//If any error occured
 		} catch (MqttException e) {
 			
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-				
+			//Print error trace
+			e.printStackTrace();		
 		}
 	}
-	
-	//this method subscribes to the standard SensorData topic with the given qos
+
+	/*
+	 * This method subscribes to the standard SensorData topic with the given Quality of Service level
+	 * Returns boolean value to indicate success of subscription
+	 */
 	public boolean subscribeToSensorData(int qos) {
 		
-		//try subscribe to the topic
+		//Try subscribe to the topic
 		try {
 			
-			//subscribe with given topic and qos
+			//Subscribe with given QoS 
 			this.client.subscribe("Connected-Devices/Sensor_Data", qos);
 			
-			
-		//if error occurred
+		//If error occurred
 		} catch (MqttException e) { 
 			
-			// TODO Auto-generated catch block
-			//print stacktrace
+			//Print error trace
 			e.printStackTrace();
 			
-			//return false for error
+			//Return False for failure to subscribe
 			return false;
 		}
 		
-		//if runs successfully, return a true
+		//If successfully subscribed, return true
 		return true;
-	
 	}
 	
-	//This method subscribes to the standard ActuatorData topic with the given qos
+	/*
+	 * This method subscribes to the standard ActuatorData topic with the given Quality of Service level
+	 * Returns boolean value to indicate success of  subscription
+	 */
 	public boolean subscribeToActuatorData(int qos) {
 		
-		//try subscribe to the topic
+		//Try subscribe to the topic
 		try {
 					
-			//subscribe with given topic and qos
+			//Subscribe with given topic and QoS
 			this.client.subscribe("Connected-Devices/Actuator_Data", qos);
 					
 					
-		//if error occurred
+		//If error occurred
 		} catch (MqttException e) { 
 					
-			// TODO Auto-generated catch block
-			//print stacktrace
+			//Print error trace
 			e.printStackTrace();
 					
-			//return false for error
+			//Return False for failure to subscribe
 			return false;
 		}
 				
-		//if runs successfully, return a true
-		return true;
-		
+		//If successfully subscribed, return true
+		return true;	
 	}
 	
 	/*
 	 * This method takes the actuatorData as the parameter and converts it to 
-	 * JSON string and publishes it to the standard ActuatorData topic
+	 * JSON string and publishes it to the standard ActuatorData topic. Returns
+	 * boolean to indicate success of publishing
 	 */
 	public boolean publishActuatorData(ActuatorData actuatorData, int qos) {
 			
-		//convert to JSON string
+		//Convert the ActuatorData to JSON string
 		String jSON = this.dUtil.toJsonFromActuatorData(actuatorData);
 		
-		//set the parameters of MqttMessage object to be published
+		//Set the parameters of MqttMessage object to be published
 		MqttMessage mqttMessage = new MqttMessage();
+		
+		//Set the Quality of Service level
 		mqttMessage.setQos(qos);
+		
+		//Set the payload to JSON string of Actuator Data
 		mqttMessage.setPayload(jSON.getBytes());
 		
-		//try to publish ActuatorData topic
+		//Try to publish ActuatorData topic
 		try {
 						
-			//publish to given topic
+			//Publish message to the standard topic
 			this.client.publish("Connected-Devices/Actuator_Data", mqttMessage);
 						
 		//if error occurred
 		} catch (MqttException e) { 
 						
-			// TODO Auto-generated catch block
-			//print stacktrace
+			//Print error trace
 			e.printStackTrace();
 						
-			//return false for error
+			//Return False for failure to subscribe
 			return false;
 		}
 					
-		//if runs successfully, return a true
+		//If successfully subscribed, return true
 		return true;	
 	}
 	
 	/*
-	 * This method takes the sensorData as the parameter and converts it to 
-	 * JSON string and publishes it to the standard SensorData topic
+	 * This method takes the SensorData as the parameter and converts it to 
+	 * JSON string and publishes it to the standard SensorData topic. Returns
+	 * boolean to indicate success of publishing
 	 */
 	public boolean publishSensorData(SensorData sensorData, int qos) {
 			
-		//convert to JSON string
+		//Convert SensorData to JSON string
 		String jSON = this.dUtil.toJsonFromSensorData(sensorData);
 		
 		//set the parameters of MqttMessage object to be published
 		MqttMessage mqttMessage = new MqttMessage();
+		
+		//Set the Quality of Service level
 		mqttMessage.setQos(qos);
+		
+		//Set the payload to JSON string of Actuator Data
 		mqttMessage.setPayload(jSON.getBytes());
 		
-		//try to publish SensorData topic
+		//Try to publish SensorData topic
 		try {
 						
-			//publish to given topic
+			//Publish to the standard topic
 			this.client.publish("Connected-Devices/Sensor_Data", mqttMessage);
 						
 		//if error occurred
 		} catch (MqttException e) { 
 						
-			// TODO Auto-generated catch block
-			//print stacktrace
+			//Print error trace
 			e.printStackTrace();
 						
-			//return false for error
+			//Return False for failure to subscribe
 			return false;
 		}
 					
-		//if runs successfully, return a true
+		//If successfully subscribed, return true
 		return true;
 	}		
 
+	//Callback for lost connection. Logs the cause of lost connection
 	public void connectionLost(Throwable cause) {
 		// TODO Auto-generated method stub
 		
@@ -198,12 +210,16 @@ public class MqttClientConnector implements MqttCallback {
 		LOGGER.info("Connection lost because " + cause);	
 	}
 	
-	//callback function for when there is a message from the publisher
+	/*
+	 * Callback function for when there is a message from the publisher. It logs the
+	 * incoming data, converts to appropriate type (SensorData object or ActuatorData object)
+	 * from looking at the source topic 
+	 */
 	public void messageArrived(String topic, MqttMessage message) throws Exception {
 		// TODO Auto-generated method stub
 		
 		//log the String
-		//create a pretty printed JSON
+		//create a pretty printed JSON (properly indented)
     	Gson gsonBuilder = new GsonBuilder().setPrettyPrinting().create();
     	
     	//get a JsonParser
@@ -215,38 +231,41 @@ public class MqttClientConnector implements MqttCallback {
     	//get the pretty printed JSON string
     	String jsonStrPretty = gsonBuilder.toJson(je);
     	
+    	//Log the incoming data
     	LOGGER.info("\n------------------------------------------------------------------------" + "\n Received Sensor Data from " + topic + "\n" + jsonStrPretty);
 		
+    	//If the source topic is of SensorData
 		if(topic.contentEquals("Connected-Devices/Sensor_Data")) {
 			
-			//convert to SensorData
+			//Convert JSON to SensorData
 	    	SensorData sensorData = this.dUtil.toSensorDataFromJson(message.toString());
 	    	
+	    	//Log the message
 	    	LOGGER.info("Converting to SensorData");
 	    	
-	    	//write the SensorData to file, this method 
-	    	this.dUtil.writeSensorDataToFile(sensorData);
-			
+	    	//Write the SensorData to file
+	    	this.dUtil.writeSensorDataToFile(sensorData);	
 		}
     		
+		//If the source topic is of ActuatorData
 		if(topic.contentEquals("Connected-Devices/Actuator_Data")) {
 			
-			//convert to ActuatorData
+			//Convert JSON to ActuatorData
 	    	ActuatorData actuatorData = this.dUtil.toActuatorDataFromJson(message.toString());
 	    	
+	    	//Log the message
 	    	LOGGER.info("Converting to ActuatorData");
 	    	
-	    	//write the ActuatorData to file, this method 
-	    	this.dUtil.writeActuatorDataToFile(actuatorData);
-			
+	    	//Write the ActuatorData to file
+	    	this.dUtil.writeActuatorDataToFile(actuatorData);	
 		}
 	}
 
+	//Callback function for completed delivery, it logs a message for completed delivery
 	public void deliveryComplete(IMqttDeliveryToken token) {
 		// TODO Auto-generated method stub
 		
 		//log the message
 		LOGGER.info("Delivery Complete");
 	}
-
 }
