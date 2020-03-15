@@ -15,6 +15,7 @@ import schooldomain.neu.pallaksingh.connecteddevices.common.SensorData;
 
 /*
  * The TempResourceHandler extends CoapResource to handle the 4 type of request messages: GET, POST, PUT, DELETE
+ * received from the client
 */
 public class TempResourceHandler extends CoapResource {
 	

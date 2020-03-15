@@ -5,6 +5,10 @@ import org.eclipse.californium.core.CoapClient;
 import org.eclipse.californium.core.CoapResponse;
 import org.eclipse.californium.core.CoapServer;
 
+/*
+ * The CoapClientConnector class provides an abstraction to all client side activities such as sending the
+ * request messages (GET, PUT, POST, DELETE) and the ping message
+ */
 public class CoapClientConnector {
 	
 	//Initialize the CoapClient
