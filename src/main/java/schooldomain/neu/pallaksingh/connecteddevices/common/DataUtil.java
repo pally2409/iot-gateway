@@ -25,7 +25,6 @@ public class DataUtil {
 	String sensorDataLogFile = "logfiles/SensorDataLogFile.log";
 	String actuatorDataLogFile = "logfiles/ActuatorDataLogFile.log";
 	
-
 	//method to convert SensorData to JSON string
     public String toJsonFromSensorData(SensorData sensorData){
     	
@@ -36,7 +35,6 @@ public class DataUtil {
     	return jsonStr;
     }
         
-    
     //method to convert JSON string to SensorData 
     public SensorData toSensorDataFromJson(String jsonStr){
     	
@@ -48,7 +46,6 @@ public class DataUtil {
     	
     }
         
-  
     //method to convert SensorData to JSON and write to filesystem
     public boolean writeSensorDataToFile(SensorData sensorData) throws IOException{
     	
@@ -104,7 +101,6 @@ public class DataUtil {
 	
     }
         
-    
     //method to convert ActuatorData to JSON string
     public String toJsonFromActuatorData(ActuatorData actuatorData){
     	
@@ -113,8 +109,7 @@ public class DataUtil {
     	
     	//return the string
     	return jsonStr;
-    }
-        
+    }   
     
     //method to convert JSON string to ActuatorData 
     public ActuatorData toActuatorDataFromJson(String jsonStr) {
