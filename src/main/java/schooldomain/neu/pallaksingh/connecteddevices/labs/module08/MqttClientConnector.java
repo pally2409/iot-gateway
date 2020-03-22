@@ -26,7 +26,7 @@ import schooldomain.neu.pallaksingh.connecteddevices.labs.module01.SystemPerform
 
 /*
  * MqttClientConnector class provides abstraction for all MQTT related tasks such as
- * subscribing, publishing various Sensor Data. 
+ * subscribing, publishing various SensorData and ActuatorData. 
  */
 public class MqttClientConnector {
 	

@@ -20,9 +20,9 @@ import schooldomain.neu.pallaksingh.connecteddevices.common.SensorData;
 
 /*
  * Class that implements MqttCallback, thereby serving as the callback function for
- * the subscription to Actuator Data values from Ubidots.
- * This class converts the incoming Actuator Data JSON to ActuatorData object and
- * passes it to the constrained device
+ * the subscription to SensorData JSON from Constrained Device.
+ * This class converts the incoming SensorData JSON to SensorData object and
+ * passes it to the Ubidots
  */
 public class SensorDataListener implements MqttCallback {
 	
