@@ -6,6 +6,8 @@ import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
+import org.json.JSONObject;
+
 import com.google.gson.*;
 
 import schooldomain.neu.pallaksingh.connecteddevices.labs.module01.SystemPerformanceAdaptor;
@@ -174,6 +176,23 @@ public class DataUtil {
     	
     	//if successful return true
     	return true;
-    }        
-
+    }
+    
+    /*
+     * Method to parse the JSON string containing variable values from ubidots
+     * 
+     * @param 	jsonStr				The JSON string received from ubidots
+     * @returns	The String value from the JSON string
+     */
+    public String fromUbidotsJsonToString(String jsonStr) {
+    	
+    	//Create a JSON object from the JSON string
+    	JSONObject jsonObject = new JSONObject(jsonStr);
+    
+    	//Retrieve the value from the JSON object
+    	String value = jsonObject.getString("value");
+    	
+    	//return the value
+    	return value;
+    }
 }

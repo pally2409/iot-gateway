@@ -63,6 +63,7 @@ public class MqttClientConnector implements MqttCallback {
 			//Set the options for the client
 			this.client.connect(conOpt);
 			
+			
 			//If any error occured
 		} catch (MqttException e) {
 			
@@ -79,9 +80,10 @@ public class MqttClientConnector implements MqttCallback {
 		
 		//Try subscribe to the topic
 		try {
-			
 			//Subscribe with given QoS 
 			this.client.subscribe("Connected-Devices/Sensor_Data", qos);
+
+			LOGGER.info("Subscribed to SensorData");
 			
 		//If error occurred
 		} catch (MqttException e) { 
