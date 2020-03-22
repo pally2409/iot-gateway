@@ -294,20 +294,24 @@ public class Module08Test
 		//Add some value
 		sensorData.addValue(9);
 		
-		//Set a name
-		sensorData.setName("Temperature");
-		
-		//Assert true for when it can publish temperature data to ubidots
-		assertEquals(this.ubidotsClientConnector.publishSensorData(sensorData, 2),true);
-		
-		//Change the sensor name name to Humidity
-		sensorData.setName("Humidity");
-		
-		//Assert true for when it can publish humidity data to ubidots
-		assertEquals(this.ubidotsClientConnector.publishSensorData(sensorData, 2),true);
-		
-		//Set another name for the sensor
-		sensorData.setName("Not a name");
+		//Test only when on the system and not on the pipeline
+		if(this.ubidotsClientConnector.getcUtil().isConfigFileLoaded()) {
+			
+			//Set a name
+			sensorData.setName("Temperature");
+			
+			//Assert true for when it can publish temperature data to ubidots
+			assertEquals(this.ubidotsClientConnector.publishSensorData(sensorData, 2),true);
+			
+			//Change the sensor name name to Humidity
+			sensorData.setName("Humidity");
+			
+			//Assert true for when it can publish humidity data to ubidots
+			assertEquals(this.ubidotsClientConnector.publishSensorData(sensorData, 2),true);
+			
+			//Set another name for the sensor
+			sensorData.setName("Not a name");	
+		}
 		
 		//Assert false because the sensor name is not a valid name as no variable for it exists on ubidots
 		assertEquals(this.ubidotsClientConnector.publishSensorData(sensorData, 2),false);

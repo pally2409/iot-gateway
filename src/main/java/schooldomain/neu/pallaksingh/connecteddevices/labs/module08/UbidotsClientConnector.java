@@ -74,6 +74,14 @@ public class UbidotsClientConnector {
 	}
 	
 	/*
+	 * Getter for the ConfigUtil instance
+	 * @return		The current ConfigUtil instance for the class
+	 */
+	public ConfigUtil getcUtil() {
+		return cUtil;
+	}
+
+	/*
 	 * Method to publish incoming SensorData to Ubidots cloud
 	 * 
 	 * @param sensorData		The SensorData object to be published
