@@ -57,7 +57,7 @@ public class MqttClientConnector {
 	/*
 	 * Constructor that instantiates classes needed for this particular class and seys 
 	 */
-	public MqttClientConnector(String hostSensor) throws MqttException {
+	public MqttClientConnector(String hostSensor) {
 		super();
 		
 		//Instantiate DataUtil used for converting incoming data to JSON for publishing to MQTT broker
@@ -67,7 +67,13 @@ public class MqttClientConnector {
 		certManagementUtil = CertManagementUtil.getInstance();
 		
 		//Initialize client
-		this.client = new MqttClient(hostSensor, MqttClient.generateClientId());
+		try {
+			this.client = new MqttClient(hostSensor, MqttClient.generateClientId());
+		} catch (MqttException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			this.client = null;
+		}
 		
 		//Clean the session 
 		this.conOpt.setCleanSession(true);

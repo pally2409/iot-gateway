@@ -48,7 +48,6 @@ public class SensorDataListener implements MqttCallback {
 			
 		//Set the UbidotsClientConnector reference for sending ActuatorData back to the constrained device
 		this.ubidotsClientConnector = new UbidotsClientConnector();
-		LOGGER.info("SENSOR DATA LISTENER");
 	}
 	
 	/*
