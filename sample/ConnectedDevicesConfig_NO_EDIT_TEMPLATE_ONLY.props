@@ -9,6 +9,12 @@ useWebAccess   = True
 baseUrl        = https://things.ubidots.com/api/v1.6/
 certFile       = ./config/ubidots_cert.pem
 configPath     = ./config
+tempSensorLabel     = tempsensor
+tempSensorID		= Not Set
+humiditySensorLabel = humidityensor
+humiditySensorID    = Not Set
+tempActuatorLabel 	= tempactuator
+tempActuatorID		= Not Set
 
 [smtp.cloud]
 host           = smtp.gmail.com
