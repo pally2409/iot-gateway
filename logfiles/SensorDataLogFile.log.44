@@ -1,11 +1,627 @@
-Feb 24, 2020 2:59:26 AM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+Apr 14, 2020 7:20:26 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
 INFO: {
-  "currentValue": 45.449028,
-  "average": 45.32958,
-  "totalCount": 8,
-  "totalValue": 362.63663,
-  "maxValue": 45.449028,
-  "minValue": 45.26526,
-  "sensorName": "Temperature Sensor",
-  "timestamp": "2020-02-24 02:59:28.537573"
+  "currentValue": 6.9,
+  "average": 12.125,
+  "totalCount": 16,
+  "totalValue": 194.0,
+  "maxValue": 16.0,
+  "minValue": 6.9,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:20:25.831509"
+}
+Apr 14, 2020 7:20:29 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.4,
+  "average": 11.964705,
+  "totalCount": 17,
+  "totalValue": 203.4,
+  "maxValue": 16.0,
+  "minValue": 6.9,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:20:28.857146"
+}
+Apr 14, 2020 7:20:32 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.2,
+  "average": 11.811111,
+  "totalCount": 18,
+  "totalValue": 212.6,
+  "maxValue": 16.0,
+  "minValue": 6.9,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:20:31.912869"
+}
+Apr 14, 2020 7:20:35 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 10.6,
+  "average": 11.747369,
+  "totalCount": 19,
+  "totalValue": 223.2,
+  "maxValue": 16.0,
+  "minValue": 6.9,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:20:34.983459"
+}
+Apr 14, 2020 7:20:38 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 12.4,
+  "average": 11.78,
+  "totalCount": 20,
+  "totalValue": 235.6,
+  "maxValue": 16.0,
+  "minValue": 6.9,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:20:38.003375"
+}
+Apr 14, 2020 7:21:57 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:21:56.955010"
+}
+Apr 14, 2020 7:21:59 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:21:59.390556"
+}
+Apr 14, 2020 7:22:01 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:22:01.437326"
+}
+Apr 14, 2020 7:22:03 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:22:03.465756"
+}
+Apr 14, 2020 7:22:05 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:22:05.532594"
+}
+Apr 14, 2020 7:22:07 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:22:07.579055"
+}
+Apr 14, 2020 7:22:09 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:22:09.627894"
+}
+Apr 14, 2020 7:22:12 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:22:11.691620"
+}
+Apr 14, 2020 7:22:16 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:22:15.695466"
+}
+Apr 14, 2020 7:22:18 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:22:18.153682"
+}
+Apr 14, 2020 7:22:20 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:22:20.279337"
+}
+Apr 14, 2020 7:22:22 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:22:22.430224"
+}
+Apr 14, 2020 7:22:24 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:22:24.476185"
+}
+Apr 14, 2020 7:22:26 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:22:26.527108"
+}
+Apr 14, 2020 7:22:28 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:22:28.572737"
+}
+Apr 14, 2020 7:22:30 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:22:30.624071"
+}
+Apr 14, 2020 7:22:33 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:22:32.670683"
+}
+Apr 14, 2020 7:22:35 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:22:34.716303"
+}
+Apr 14, 2020 7:22:37 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:22:36.746820"
+}
+Apr 14, 2020 7:22:39 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:22:38.811779"
+}
+Apr 14, 2020 7:22:41 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:22:40.860217"
+}
+Apr 14, 2020 7:22:43 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:22:42.910166"
+}
+Apr 14, 2020 7:22:45 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:22:44.958700"
+}
+Apr 14, 2020 7:22:47 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:22:46.991472"
+}
+Apr 14, 2020 7:22:49 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:22:49.053555"
+}
+Apr 14, 2020 7:22:51 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:22:51.103260"
+}
+Apr 14, 2020 7:22:53 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:22:53.129951"
+}
+Apr 14, 2020 7:22:55 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:22:55.199531"
+}
+Apr 14, 2020 7:22:57 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:22:57.245557"
+}
+Apr 14, 2020 7:22:59 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:22:59.295101"
+}
+Apr 14, 2020 7:23:19 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:23:18.642095"
+}
+Apr 14, 2020 7:23:21 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:23:21.062556"
+}
+Apr 14, 2020 7:24:09 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:24:10.366802"
+}
+Apr 14, 2020 7:24:09 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:24:10.979110"
+}
+Apr 14, 2020 7:24:09 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:24:11.100355"
+}
+Apr 14, 2020 7:24:09 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:24:11.241169"
+}
+Apr 14, 2020 7:24:09 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:24:11.361616"
+}
+Apr 14, 2020 7:24:09 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:24:11.481879"
+}
+Apr 14, 2020 7:24:10 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:24:11.617109"
+}
+Apr 14, 2020 7:24:10 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:24:11.759200"
+}
+Apr 14, 2020 7:24:10 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:24:11.885874"
+}
+Apr 14, 2020 7:24:10 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:24:12.005046"
+}
+Apr 14, 2020 7:24:10 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:24:12.123301"
+}
+Apr 14, 2020 7:24:10 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:24:12.239674"
+}
+Apr 14, 2020 7:24:10 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:24:12.356787"
+}
+Apr 14, 2020 7:24:10 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:24:12.473721"
+}
+Apr 14, 2020 7:24:11 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:24:12.599175"
+}
+Apr 14, 2020 7:24:11 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:24:12.725266"
+}
+Apr 14, 2020 7:24:11 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:24:12.841693"
+}
+Apr 14, 2020 7:24:11 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:24:12.957243"
+}
+Apr 14, 2020 7:24:11 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:24:13.073689"
+}
+Apr 14, 2020 7:24:11 PM schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil writeSensorDataToFile
+INFO: {
+  "currentValue": 9.0,
+  "average": 9.0,
+  "totalCount": 1,
+  "totalValue": 9.0,
+  "maxValue": 9.0,
+  "minValue": 9.0,
+  "sensorName": "Not Set",
+  "timestamp": "2020-04-14 19:24:13.194990"
 }

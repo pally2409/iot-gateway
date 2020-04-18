@@ -2,15 +2,22 @@
 package schooldomain.neu.pallaksingh.connecteddevices.common;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
 import org.json.JSONObject;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.*;
 
 import schooldomain.neu.pallaksingh.connecteddevices.labs.module01.SystemPerformanceAdaptor;
+import schooldomain.neu.pallaksingh.connecteddevices.project.IMUSensorData;
 
 public class DataUtil {
 	
@@ -195,4 +202,166 @@ public class DataUtil {
     	//return the value
     	return value;
     }
+    
+    /**
+     * Method to parse the JSON string containing the IMUSensorData
+     * 
+     * @param 	jsonStr
+     * 				The JSON string to be converted to IMUSensorData object
+     * 
+     * @return  the IMUSensorData object formed by parsing the JSON string
+     */
+    public IMUSensorData toIMUSensorDataFromJson(String jsonStr) {
+    	
+    	//Convert the JSON string to IMUSensorData object
+    	IMUSensorData imuSensorData		= this.gson.fromJson(jsonStr, IMUSensorData.class);
+    	
+    	//Return the IMUSensorData object
+    	return imuSensorData;
+    }
+    
+    /**
+     * Method to parse the JSON string containing the IMUSensorData
+     * 
+     * @param imuSensorData
+     * 			The IMUSensorData object to be converted to Json String
+     * 
+     * @return the JSON string formed by parsing the IMUSensorData object
+     */
+    public String toJsonFromImuSensorData(IMUSensorData imuSensorData) {
+    	
+    	//Convert the IMUSensorData object to JSON string
+    	String jsonStr		= this.gson.toJson(imuSensorData);
+    	
+    	//Return the JSON string
+    	return jsonStr;
+    }
+    
+    /**
+     * Method to parse an ArrayList containing IMUSensorData objects and
+     * convert to JSON string
+     * 
+     * @param imuSensorDataList
+     * 				ArrayList containing IMUSensorData objects to be converted to Json String
+     * 
+     * @return the JSON string formed from the list containing IMUSensorData objects
+     */
+    public String toJsonFromImuSensorDataList(ArrayList<IMUSensorData> imuSensorDataList) {
+    	
+    	IMUSensorData gyroscope = new IMUSensorData();
+    	IMUSensorData accelerometer = new IMUSensorData();
+    	
+    	for(IMUSensorData imuSensor : imuSensorDataList) {
+    		
+    		if(imuSensor.getName().contentEquals("Gyroscope")) {
+    			
+    			gyroscope =	imuSensor;
+    		}
+    		
+    		if(imuSensor.getName().contentEquals("Accelerometer")) {
+    			
+    			accelerometer = imuSensor;
+    		}
+    	}
+    	
+    	Hashtable<String, IMUSensorData> imuSensorDataDict = new Hashtable<String, IMUSensorData>();
+    	imuSensorDataDict.put("Gyroscope", gyroscope);
+    	imuSensorDataDict.put("Accelerometer", accelerometer);
+    	
+    	//Convert the IMUSensorData object list to JSON string
+    	String jsonStr		= this.gson.toJson(imuSensorDataDict);
+    	
+    	//Return the jsonString
+    	return jsonStr;
+    	
+    }
+    
+    /**
+     * Method to parse an ArrayList containing IMUSensorData objects and
+     * convert to JSON string
+     * 
+     * @param jsonStr
+     * 			The JSON string containing IMUSensorData objects in string form
+     * 
+     * @return The ArrayList containing IMUSensorData objects 
+     */
+    public ArrayList<IMUSensorData> toImuSensorDataListFromJson(String jsonStr) {
+    	
+    	JSONObject jsonObject = new JSONObject(jsonStr);
+    	JSONObject jsonObjectGyroscope = jsonObject.getJSONObject("Gyroscope");
+    	JSONObject jsonObjectAccelerometer = jsonObject.getJSONObject("Accelerometer");
+    	
+    	IMUSensorData gyroscopeData = gson.fromJson(jsonObjectGyroscope.toString(), IMUSensorData.class);
+    	IMUSensorData accelerometerData = gson.fromJson(jsonObjectAccelerometer.toString(), IMUSensorData.class);
+    	ArrayList<IMUSensorData> imuSensorDataList = new ArrayList<IMUSensorData>();
+    	
+    	imuSensorDataList.add(gyroscopeData);
+    	imuSensorDataList.add(accelerometerData);
+    	return imuSensorDataList;
+    }
+    
+    /**
+     * Method to parse an ArrayList containing SensorData objects and
+     * convert to JSON string
+     * 
+     * @param sensorDataList
+     * 				ArrayList containing SensorData objects to be converted to Json String
+     * 
+     * @return the JSON string formed from the list containing SensorData objects
+     */
+    public String toJsonFromSensorDataList(ArrayList<SensorData> sensorDataList) {
+    	
+    	SensorData memoryUtil = new SensorData();
+    	SensorData cpuUtil = new SensorData();
+    	
+    	for(SensorData sensor : sensorDataList) {
+    		
+    		if(sensor.getName().contentEquals("Memory")) {
+    			
+    			memoryUtil =	memoryUtil;
+    		}
+    		
+    		if(sensor.getName().contentEquals("CPU")) {
+    			
+    			cpuUtil = cpuUtil;
+    		}
+    	}
+    	
+    	Hashtable<String, SensorData> sensorDataDict = new Hashtable<String, SensorData>();
+    	sensorDataDict.put("Memory", memoryUtil);
+    	sensorDataDict.put("CPU", cpuUtil);
+    	
+    	//Convert the IMUSensorData object list to JSON string
+    	String jsonStr		= this.gson.toJson(sensorDataDict);
+    	
+    	//Return the jsonString
+    	return jsonStr;
+    	
+    }
+    
+    /**
+     * Method to parse an ArrayList containing IMUSensorData objects and
+     * convert to JSON string
+     * 
+     * @param jsonStr
+     * 			The JSON string containing IMUSensorData objects in string form
+     * 
+     * @return The ArrayList containing IMUSensorData objects 
+     */
+    public ArrayList<SensorData> toSensorDataListFromJson(String jsonStr) {
+    	
+    	JSONObject jsonObject = new JSONObject(jsonStr);
+    	JSONObject jsonObjectMem = jsonObject.getJSONObject("Memory");
+    	JSONObject jsonObjectCpu = jsonObject.getJSONObject("CPU");
+    	
+    	SensorData memData = gson.fromJson(jsonObjectMem.toString(), SensorData.class);
+    	SensorData cpuData = gson.fromJson(jsonObjectCpu.toString(), SensorData.class);
+    	ArrayList<SensorData> sensorDataList = new ArrayList<SensorData>();
+    	
+    	sensorDataList.add(memData);
+    	sensorDataList.add(cpuData);
+    	return sensorDataList;
+    }
+    
+    
 }
