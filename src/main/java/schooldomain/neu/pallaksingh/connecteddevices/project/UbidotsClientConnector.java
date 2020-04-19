@@ -46,7 +46,6 @@ public class UbidotsClientConnector {
 	//Declare DataUtil for conversions to and from JSON string
 	DataUtil dUtil;
 	
-	
 	//Boolean value to indicate whether using HTTPs (Ubidots API) for publishing sensor data
 	boolean useUbidotsAPI = false;
 	
@@ -58,6 +57,7 @@ public class UbidotsClientConnector {
 	public UbidotsClientConnector(ConfigUtil confUtil, DataUtil dUtil) {
 		super();
 		
+		//Get the singleton for the certificate management class
 		CertManagementUtil certManagementUtil = CertManagementUtil.getInstance();
 		
 		//Initialize ConfigUtil to take care of API credentials and Ubidots device parameters
@@ -66,36 +66,47 @@ public class UbidotsClientConnector {
 		//Initialize dUtil for conversions to and from JSON string
 		this.dUtil						= dUtil;
 		
-		//Instantiate the API client using the user specific API key
-		api								= new ApiClient(this.cUtil.getValue("ubidots.cloud", "apiKey"));
-	
-		//Instantiate MqttClientConnector for publishing temperature sensor readings and register a listener for actuator value changes
-		mqttClientConnector 			= new MqttClientConnector("ssl://" + this.cUtil.getValue("ubidots.cloud", "host") + ":" + "8883", dUtil);
+		//Try to connect to ubidots using the variables from configuration file
+		try {
+			
+			//Instantiate the API client using the user specific API key
+			api								= new ApiClient(this.cUtil.getValue("ubidots.cloud", "apiKey"));
 		
-		//Get the data source for the constrained device
-		dataSource = api.getDataSource("iot-device");
+			//Instantiate MqttClientConnector for publishing temperature sensor readings and register a listener for actuator value changes
+			mqttClientConnector 			= new MqttClientConnector("ssl://" + this.cUtil.getValue("ubidots.cloud", "host") + ":" + "8883", dUtil);
+			
+			//Get the data source for the constrained device
+			dataSource = api.getDataSource("iot-device");
+			
+			//Define the variable IDs for the TempSensor and TempActuator
+			CONSTRAINED_MEM_ID 				= confUtil.getValue("ubidots.cloud", "constrainedMemID"); 					//Ubidots label ID for constrained device memory utilization variable
+			CONSTRAINED_CPU_ID 				= confUtil.getValue("ubidots.cloud", "constrainedCpuID");					//Ubidots label ID for constrained device CPU utilization variable
+			GATEWAY_MEM_ID     				= confUtil.getValue("ubidots.cloud", "gatewayMemID");						//Ubidots label ID for gateway device memory utilization variable
+			GATEWAY_CPU_ID	   				= confUtil.getValue("ubidots.cloud", "gatewayCpuID");							//Ubidots label ID for gateway device CPU utilization variable
+			EMERGENCY_BUTTON_ID				= confUtil.getValue("ubidots.cloud", "emergencyButtonID");					//Ubidots label ID for emergency button variable
+			GYROSCOPE_X_ID     				= confUtil.getValue("ubidots.cloud", "gyroscopeXID");							//Ubidots label ID for gyroscope x attribute variable
+			GYROSCOPE_Y_ID     				= confUtil.getValue("ubidots.cloud", "gyroscopeYID");							//Ubidots label ID for gyroscope y attribute variable
+			GYROSCOPE_Z_ID     				= confUtil.getValue("ubidots.cloud", "gyroscopeZID");			//Ubidots label ID for gyroscope z attribute variable
+			ACCEL_X_ID         				= confUtil.getValue("ubidots.cloud", "accelerometerXID");			//Ubidots label ID for accelerometer x attribute variable
+			ACCEL_Y_ID         				= confUtil.getValue("ubidots.cloud", "accelerometerYID");				//Ubidots label ID for accelerometer y attribute
+			ACCEL_Z_ID         				= confUtil.getValue("ubidots.cloud", "accelerometerZID");			//Ubidots label ID for accelerometer z attribute
+			
+			//Initialize the MQTT topic for Ubidots  
+			MQTT_TOPIC 				= this.cUtil.getValue("ubidots.cloud", "devicePath");
+			
+			//Set the socket factory obtained from the SSL certificate
+			mqttClientConnector.conOpt.setSocketFactory(certManagementUtil.loadCertificate(this.cUtil.getValue("ubidots.cloud", "certFile")));
+			
+			//Set the user name token for ubidots
+			mqttClientConnector.conOpt.setUserName(this.cUtil.getValue("ubidots.cloud", "userNameToken"));	
+		}
 		
-		//Define the variable IDs for the TempSensor and TempActuator
-		CONSTRAINED_MEM_ID 				= confUtil.getValue("ubidots.cloud", "constrainedMemID"); 					//Ubidots label ID for constrained device memory utilization variable
-		CONSTRAINED_CPU_ID 				= confUtil.getValue("ubidots.cloud", "constrainedCpuID");					//Ubidots label ID for constrained device CPU utilization variable
-		GATEWAY_MEM_ID     				= confUtil.getValue("ubidots.cloud", "gatewayMemID");						//Ubidots label ID for gateway device memory utilization variable
-		GATEWAY_CPU_ID	   				= confUtil.getValue("ubidots.cloud", "gatewayCpuID");							//Ubidots label ID for gateway device CPU utilization variable
-		EMERGENCY_BUTTON_ID				= confUtil.getValue("ubidots.cloud", "emergencyButtonID");					//Ubidots label ID for emergency button variable
-		GYROSCOPE_X_ID     				= confUtil.getValue("ubidots.cloud", "gyroscopeXID");							//Ubidots label ID for gyroscope x attribute variable
-		GYROSCOPE_Y_ID     				= confUtil.getValue("ubidots.cloud", "gyroscopeYID");							//Ubidots label ID for gyroscope y attribute variable
-		GYROSCOPE_Z_ID     				= confUtil.getValue("ubidots.cloud", "gyroscopeZID");			//Ubidots label ID for gyroscope z attribute variable
-		ACCEL_X_ID         				= confUtil.getValue("ubidots.cloud", "accelerometerXID");			//Ubidots label ID for accelerometer x attribute variable
-		ACCEL_Y_ID         				= confUtil.getValue("ubidots.cloud", "accelerometerYID");				//Ubidots label ID for accelerometer y attribute
-		ACCEL_Z_ID         				= confUtil.getValue("ubidots.cloud", "accelerometerZID");			//Ubidots label ID for accelerometer z attribute
-		
-		//Initialize the MQTT topic for Ubidots  
-		MQTT_TOPIC 				= this.cUtil.getValue("ubidots.cloud", "devicePath");
-		
-		//Set the socket factory obtained from the SSL certificate
-		mqttClientConnector.conOpt.setSocketFactory(certManagementUtil.loadCertificate(this.cUtil.getValue("ubidots.cloud", "certFile")));
-		
-		//Set the user name token for ubidots
-		mqttClientConnector.conOpt.setUserName(this.cUtil.getValue("ubidots.cloud", "userNameToken"));
+		//If an error occurred especially on the pipeline, catch the error
+		catch(Exception e) {
+			
+			//Print the stack trace
+			e.printStackTrace();
+		}
 	}
 	
 	/**

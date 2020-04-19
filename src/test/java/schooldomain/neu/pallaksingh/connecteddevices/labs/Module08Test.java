@@ -287,7 +287,6 @@ public class Module08Test
 	@Test
 	public void testPublishSensorDataUbidots() 
 	{
-		
 		//Create sensorData
 		SensorData sensorData = new SensorData();
 		

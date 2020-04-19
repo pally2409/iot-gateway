@@ -8,6 +8,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+
+import schooldomain.neu.pallaksingh.connecteddevices.common.ActuatorData;
 import schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil;
 import schooldomain.neu.pallaksingh.connecteddevices.common.SensorData;
 
@@ -31,6 +33,9 @@ public class ActuatorResponseResourceHandler extends CoapResource {
 	//Initialize UbidotsClientConnector for sending the actuator response to Ubidots Cloud
 	UbidotsClientConnector ubidotsClientConnector;
 	
+	//Declare MqttClientConnector for communicating to constrained device that a fall was detected
+	MqttClientConnector mqttClientConnector;
+	
 	/**
 	 * This constructor is used to set the resource name by passing the parameter to the super class constructor,
 	 * initialize the classes needed for the operation of this class
@@ -42,7 +47,7 @@ public class ActuatorResponseResourceHandler extends CoapResource {
 	 * @param ubidotsClientConnector
 	 * 			UbidotsClientConnector reference for sending the actuator response to Ubidots Cloud
 	 */
-	public ActuatorResponseResourceHandler(String name, DataUtil dUtil, UbidotsClientConnector ubidotsClientConnector) {
+	public ActuatorResponseResourceHandler(String name, DataUtil dUtil, UbidotsClientConnector ubidotsClientConnector, MqttClientConnector mqttClientConnector) {
 		
 		//Set the name for the resource by passing it to the super class constructor
 		super(name);
@@ -52,6 +57,9 @@ public class ActuatorResponseResourceHandler extends CoapResource {
 			
 		//Initialize UbidotsClientConnector
 		this.ubidotsClientConnector = ubidotsClientConnector;
+		
+		//Initialize MqttClientConnector for sending actuator data to constrained device if a fall is detected
+		this.mqttClientConnector 		= mqttClientConnector; 
 	}
 	
 	/**
@@ -89,7 +97,27 @@ public class ActuatorResponseResourceHandler extends CoapResource {
     	
     	//Convert to SensorData object
     	this.convertIncomingDataToSensorData(ce.getRequestText());
-        
+    	
+    	//Check if the sensor is the emergency button
+    	if(this.sensorData.getName().contentEquals("Emergency")) {
+    		
+    		//Check if there was no response from the user
+    		if(this.sensorData.getCurrentValue() == 1.0) {
+    			
+    			//Display on the user's device that we are notifying the emergency contact
+    			
+    			//Instantiate a new ActuatorData object to be sent to the actuator (constrained device)
+            	ActuatorData actuatorData = new ActuatorData();
+    			
+            	//Set the parameters
+            	actuatorData.setCommand("DISPLAY WARNING");				//The command
+            	actuatorData.setName("CALLING DISPLAY");				//Actuator Name
+            	actuatorData.setValue(1);								//Value to be displayed
+            	
+            	//Send via MQTT
+            	this.mqttClientConnector.publishActuatorData("Connected-Devices/Actuator_Data", actuatorData, 2);
+    		}
+    	}
     	//Publish the SensorData object to Ubidots 
         this.ubidotsClientConnector.publishSensorData(this.sensorData, 2);
     }

@@ -22,6 +22,5 @@ public class GatewayHandlerApp {
 		
 		//Run the gateway data manager
 		gatewayDataManager.run();
-
 	}
 }

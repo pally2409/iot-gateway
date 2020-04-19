@@ -54,6 +54,9 @@ public class GatewayDataManager {
 		//Instantiate ConfigUtil for reading configurations from the config file
 		confUtil										= new ConfigUtil();
 		
+		//Instantiate DataUtil for handling communication to and from gateway device to Ubidots and Constrained device
+		dUtil											= new DataUtil();
+		
 		//InstantiateSmtpClientConnector for sending mails using the SMTP protocol
 		smtpClientConnector								= new SmtpClientConnector(confUtil);	
 		
@@ -68,9 +71,6 @@ public class GatewayDataManager {
 		
 		//Instantiate SystemPerformanceAdaptor to gather system performance data for the gateway device
 		sysPerformanceAdaptor 							= new SystemPerformanceAdaptor(ubidotsClientConnectorSystemPerformance);
-		
-		//Instantiate DataUtil for handling communication to and from gateway device to Ubidots and Constrained device
-		dUtil											= new DataUtil();
 		
 		//Instantiate CoapServerManager for listening for new SensorData and IMUSensorData from constrained device 
 		coapServerManager								= new CoapServerManager();
@@ -95,7 +95,7 @@ public class GatewayDataManager {
 		coapServerManager.addResource(new IMUSensorDataResourceHandler("imuData", dUtil, ubidotsClientConnectorSensorData, mqttClientConnector, smtpClientConnector));
 		
 		//Add ActuatorResponseResourceHandler to CoapServerManager to handle a response to actuation on the constrained device
-		coapServerManager.addResource(new ActuatorResponseResourceHandler("fallDetect", dUtil, ubidotsClientConnectorSensorData));	
+		coapServerManager.addResource(new ActuatorResponseResourceHandler("fallDetect", dUtil, ubidotsClientConnectorSensorData, mqttClientConnector));	
 	}
 	
 	/**

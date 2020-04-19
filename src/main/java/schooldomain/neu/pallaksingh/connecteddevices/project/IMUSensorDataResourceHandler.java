@@ -147,7 +147,7 @@ public class IMUSensorDataResourceHandler extends CoapResource {
         	
         	//Send a mail using SmtpClientConnector
         	smtpClientConnector.publishMessage("EMERGENCY: Please check on Mr. Sense Hat", "Our systems have detected a fall on the wearable device that Mr. Sense Hat is wearing. "
-        			+ "We have not received a response from him post the fall. Please check on him immediately.");
+        			+ "We have not received a response from him post the fall. Please check on him immediately. \n The Fall A Friend team");
     	}
     	
     	//Check if the counter is 10, (we publish every 10 values to Ubidots

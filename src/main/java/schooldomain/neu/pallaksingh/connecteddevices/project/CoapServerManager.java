@@ -30,7 +30,7 @@ public class CoapServerManager {
 	 * This method adds the resource passed as the parameter to the CoapServer. It validates
 	 * whether the resource is not a null and only then adds it to the CoapServer
 	 * 
-	 * @returns A true value because this method does not fail
+	 * @returns A boolean value indicating the success in adding of resource
 	 */
 	public boolean addResource(CoapResource resource) {
 		
@@ -40,16 +40,16 @@ public class CoapServerManager {
 			//If not, add it to the CoapServer reference
 			this.coapServer.add(resource);
 			
-			//Always returns a true because this method does not fail
+			//Return a true to indicate successful adding of resource
 			return true;
 		}
 		
+		//If passed a null in the argument
 		else {
 			
+			//Return a false to indicate failure in adding of resource
 			return false;
-		}
-		
-		
+		}	
 	}
 	
 	/**
