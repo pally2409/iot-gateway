@@ -36,6 +36,9 @@ public class ActuatorResponseResourceHandler extends CoapResource {
 	//Declare MqttClientConnector for communicating to constrained device that a fall was detected
 	MqttClientConnector mqttClientConnector;
 	
+	//Declare SmtpClientConnector for sending a mail in case of a fall is detected
+	SmtpClientConnector smtpClientConnector;
+	
 	/**
 	 * This constructor is used to set the resource name by passing the parameter to the super class constructor,
 	 * initialize the classes needed for the operation of this class
@@ -47,7 +50,7 @@ public class ActuatorResponseResourceHandler extends CoapResource {
 	 * @param ubidotsClientConnector
 	 * 			UbidotsClientConnector reference for sending the actuator response to Ubidots Cloud
 	 */
-	public ActuatorResponseResourceHandler(String name, DataUtil dUtil, UbidotsClientConnector ubidotsClientConnector, MqttClientConnector mqttClientConnector) {
+	public ActuatorResponseResourceHandler(String name, DataUtil dUtil, UbidotsClientConnector ubidotsClientConnector, MqttClientConnector mqttClientConnector, SmtpClientConnector smtpClientConnector) {
 		
 		//Set the name for the resource by passing it to the super class constructor
 		super(name);
@@ -60,6 +63,9 @@ public class ActuatorResponseResourceHandler extends CoapResource {
 		
 		//Initialize MqttClientConnector for sending actuator data to constrained device if a fall is detected
 		this.mqttClientConnector 		= mqttClientConnector; 
+		
+		//Initialize SmtpClientConnector for sending a mail in case of a fall is detected
+		this.smtpClientConnector		= smtpClientConnector;	
 	}
 	
 	/**
@@ -116,6 +122,10 @@ public class ActuatorResponseResourceHandler extends CoapResource {
             	
             	//Send via MQTT
             	this.mqttClientConnector.publishActuatorData("Connected-Devices/Actuator_Data", actuatorData, 2);
+            	
+            	//Send a mail using SmtpClientConnector
+            	smtpClientConnector.publishMessage("EMERGENCY: Please check on Mr. Sense Hat", "Our systems have detected a fall on the wearable device that Mr. Sense Hat is wearing. "
+            			+ "We have not received a response from him post the fall. Please check on him immediately. \n The Fall A Friend team");
     		}
     	}
     	//Publish the SensorData object to Ubidots 

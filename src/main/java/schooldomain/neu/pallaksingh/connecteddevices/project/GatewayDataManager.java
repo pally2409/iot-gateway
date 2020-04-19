@@ -89,13 +89,13 @@ public class GatewayDataManager {
 		}
 		
 		//Add SystemPerformanceResourceHandler to CoapServerManager to handle System performance data for Constrained device
-		coapServerManager.addResource(new SystemPerformanceResourceHandler("sysPerf", dUtil, ubidotsClientConnectorSystemPerformance));
+		coapServerManager.addResource(new SystemPerformanceResourceHandler("sysPerf", dUtil, ubidotsClientConnectorSystemPerformance, smtpClientConnector));
 				
 		//Add IMUSensorDataResourceHandler to CoapServerManager to handle IMUSensorData 
 		coapServerManager.addResource(new IMUSensorDataResourceHandler("imuData", dUtil, ubidotsClientConnectorSensorData, mqttClientConnector, smtpClientConnector));
 		
 		//Add ActuatorResponseResourceHandler to CoapServerManager to handle a response to actuation on the constrained device
-		coapServerManager.addResource(new ActuatorResponseResourceHandler("fallDetect", dUtil, ubidotsClientConnectorSensorData, mqttClientConnector));	
+		coapServerManager.addResource(new ActuatorResponseResourceHandler("fallDetect", dUtil, ubidotsClientConnectorSensorData, mqttClientConnector, smtpClientConnector));	
 	}
 	
 	/**

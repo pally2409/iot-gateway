@@ -1,8 +1,13 @@
 package schooldomain.neu.pallaksingh.connecteddevices.project;
+import java.io.IOException;
 import java.util.logging.Logger;
 
 import org.eclipse.paho.client.mqttv3.MqttException;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import com.labbenchstudios.iot.common.CertManagementUtil;
 import com.ubidots.*;
 import schooldomain.neu.pallaksingh.connecteddevices.common.ConfigUtil;
@@ -12,6 +17,8 @@ import schooldomain.neu.pallaksingh.connecteddevices.common.SensorData;
 /**
  * UbidotsClientConnector class provides abstraction for all Ubidots related tasks such as updating value of variables via
  * the Ubidots API 
+ * 
+ * @author pallaksingh
  */
 public class UbidotsClientConnector {
 		
@@ -155,6 +162,36 @@ public class UbidotsClientConnector {
 			
 			//Set the variable ID appropriately
 			variableParam = this.GATEWAY_MEM_ID;
+			
+			//log the String
+	      	//create a pretty printed JSON (properly indented)
+	        Gson gsonBuilder = new GsonBuilder().setPrettyPrinting().create();
+	          	
+	        //get a JsonParser
+	        JsonParser jp = new JsonParser();
+	          	
+	        //get the parsed jsonString
+	        JsonElement je = jp.parse(this.dUtil.toJsonFromSensorData(sensorData));
+	          	
+	        //get the pretty printed JSON string
+	        String jsonStrPretty = gsonBuilder.toJson(je);
+	        
+	        //Try to write the SensorData to log file
+	        try {
+	        	
+	        	//
+				this.dUtil.writeSensorDataToFile(sensorData);
+			} 
+	        
+	        //If an error occurred, such as file doesn't exist
+	        catch (IOException e) {
+				
+	        	//Print the error stack trace
+				e.printStackTrace();
+			}
+	          	
+	        //Log the incoming data
+	        LOGGER.info("\n------------------------------------------------------------------------" + "\n Gateway Memory Utilization" + jsonStrPretty);
 		}
 		
 		//If gateway device cpu utilization
@@ -162,6 +199,36 @@ public class UbidotsClientConnector {
 			
 			//Set the variable ID appropriately
 			variableParam = this.GATEWAY_CPU_ID;
+			
+			//log the String
+	      	//create a pretty printed JSON (properly indented)
+	        Gson gsonBuilder = new GsonBuilder().setPrettyPrinting().create();
+	          	
+	        //get a JsonParser
+	        JsonParser jp = new JsonParser();
+	          	
+	        //get the parsed jsonString
+	        JsonElement je = jp.parse(this.dUtil.toJsonFromSensorData(sensorData));
+	          	
+	        //get the pretty printed JSON string
+	        String jsonStrPretty = gsonBuilder.toJson(je);
+	        
+	        //Try to write the SensorData to log file
+	        try {
+	        	
+	        	//
+				this.dUtil.writeSensorDataToFile(sensorData);
+			} 
+	        
+	        //If an error occurred, such as file doesn't exist
+	        catch (IOException e) {
+				
+	        	//Print the error stack trace
+				e.printStackTrace();
+			}
+	          	
+	        //Log the incoming data
+	        LOGGER.info("\n------------------------------------------------------------------------" + "\n Gateway CPU Utilization" + jsonStrPretty);
 		}
 		
 		//If emergency button

@@ -144,10 +144,6 @@ public class IMUSensorDataResourceHandler extends CoapResource {
         	
         	//Publish the actuator data to the standard topic for actuator data to which the constrained device has subscribed to
         	mqttClientConnector.publishActuatorData("Connected-Devices/Actuator_Data", actuatorData, 2);
-        	
-        	//Send a mail using SmtpClientConnector
-        	smtpClientConnector.publishMessage("EMERGENCY: Please check on Mr. Sense Hat", "Our systems have detected a fall on the wearable device that Mr. Sense Hat is wearing. "
-        			+ "We have not received a response from him post the fall. Please check on him immediately. \n The Fall A Friend team");
     	}
     	
     	//Check if the counter is 10, (we publish every 10 values to Ubidots

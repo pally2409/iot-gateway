@@ -567,7 +567,7 @@ public class ProjectTest
 	public void testAddResource() 
 	{
 		//Assert true if added a valid resource handler to the server manager
-		assertEquals(this.coapServerManager.addResource(new SystemPerformanceResourceHandler("Random", this.dUtil, this.ubidotsClientConnector)), true);
+		assertEquals(this.coapServerManager.addResource(new SystemPerformanceResourceHandler("Random", this.dUtil, this.ubidotsClientConnector, this.smtpClientConnector)), true);
 		
 		//Assert false if added a null to the server manager
 		assertTrue(this.coapServerManager.addResource(null) == false);	

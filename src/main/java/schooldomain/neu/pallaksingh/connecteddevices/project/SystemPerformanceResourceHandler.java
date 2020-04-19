@@ -17,9 +17,10 @@ import com.google.gson.JsonParser;
 import schooldomain.neu.pallaksingh.connecteddevices.common.DataUtil;
 import schooldomain.neu.pallaksingh.connecteddevices.common.SensorData;
 
-/*
- * The TempResourceHandler extends CoapResource to handle the 4 type of request messages: GET, POST, PUT, DELETE
- * received from the client
+/**
+ * The SystemPerformanceResourceHandler extends CoapResource to handle the 4 POST request message received from the client
+ * 
+ * @author pallaksingh
 */
 public class SystemPerformanceResourceHandler extends CoapResource {
 	
@@ -32,15 +33,16 @@ public class SystemPerformanceResourceHandler extends CoapResource {
 	//Initialize the sensorData
 	ArrayList<SensorData> sensorDataList;
 	
-	
+	//Initialize UbidotsClientConnector for sending system performance data to ubidots
 	UbidotsClientConnector ubidotsClientConnector;
 	
-	/*
+	/**
 	 * This constructor is used to set the resource name by passing the parameter to the super class constructor
 	 * 
-	 * @param name The resource name passed during instantiation
+	 * @param name 
+	 * 			The resource name passed during instantiation
 	 */
-	public SystemPerformanceResourceHandler(String name, DataUtil dUtil, UbidotsClientConnector ubidotsClientConnector) {
+	public SystemPerformanceResourceHandler(String name, DataUtil dUtil, UbidotsClientConnector ubidotsClientConnector, SmtpClientConnector smtpClientConnector) {
 		
 		//Set the name for the resource by passing it to the super class constructor
 		super(name);
@@ -50,48 +52,15 @@ public class SystemPerformanceResourceHandler extends CoapResource {
 			
 		//Initialize UbidotsClientConnector
 		this.ubidotsClientConnector = ubidotsClientConnector;
-		
 	}
 	
-	/*
-	 * This method is an overriden method from the super class and is used to handle
-	 * GET requests. It sends a valid response code to the sender indicating he received the request
-	 * 
-	 * @param: CoapExchange Represents exchange between CoAP request and response
-	 */
-	@Override
-	public void handleGET(CoapExchange ce) {
-		
-		//Send the valid response code
-		ce.respond(ResponseCode.VALID, "GET WORKED");
-		
-		//Log a message
-		LOGGER.info("Received GET request message");	
-	}
-	
-	/*
-	 * This method is an overriden method from the super class and is used to handle
-	 * DELETE requests. It sends a valid response code to the sender indicating he received the request
-	 * 
-	 * @param: CoapExchange Represents exchange between CoAP request and response
-	 */
-	@Override
-	public void handleDELETE(CoapExchange ce) {
-		
-		//Send the valid response code
-		ce.respond(ResponseCode.VALID, "GET WORKED");
-		
-		//Log a message
-		LOGGER.info("Received DELETE request message");
-	}
-
 	/**
 	 * This method is an overriden method from the super class and is used to handle
 	 * PUT requests. It sends a valid response code to the sender indicating he received the request
 	 * It also creates a SensorData object from the received PUT request (if applicable) and logs it
 	 * 
-	 * @param: CoapExchange Represents exchange between CoAP request and response
-	 * 
+	 * @param: ce
+	 * 			Represents exchange between CoAP request and response
 	 */
 	@Override
 	public void handlePOST(CoapExchange ce) {
@@ -117,17 +86,16 @@ public class SystemPerformanceResourceHandler extends CoapResource {
 
         //Log the message
     	LOGGER.info("Converting to SensorData");
+    	
     	//Convert to SensorData object
-        
     	this.convertIncomingDataToSensorData(ce.getRequestText());
-//        System.out.println(this.sensorData.toString());
         
+    	//Send the data to Ubidots
         this.ubidotsClientConnector.publishSensorData(this.sensorDataList.get(0), 2);
         this.ubidotsClientConnector.publishSensorData(this.sensorDataList.get(1), 2);
-
     }
 	
-	/*
+	/**
 	 * Method to convert the incoming PUT request message to a sensorDataString
 	 * 
 	 * @returns A boolean indicating the success of conversion
