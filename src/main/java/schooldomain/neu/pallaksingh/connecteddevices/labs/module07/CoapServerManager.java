@@ -54,7 +54,7 @@ public class CoapServerManager {
 	 * @returns A true value because this method does not fail
 	 */
 	public boolean startServer()   {
-		
+			
 		//Check if the coapServer reference is null
 		if(coapServer == null) {
 			
@@ -72,8 +72,19 @@ public class CoapServerManager {
 		//Log the message that the server has been started
 		LOGGER.info("Starting the CoAP server");
 		
-		//Start the coapServer
-		coapServer.start();
+		//Try to start the server
+		try {
+			
+			//Start the coapServer
+			coapServer.start();
+		} 
+		
+		//If an error occurred, especially during pipeline
+		catch (Exception e) {
+			
+			//Print the error stacktrace
+			e.printStackTrace();
+		}
 		
 		//Always returns a true because this method does not fail
 		return true;

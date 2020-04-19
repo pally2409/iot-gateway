@@ -574,16 +574,6 @@ public class ProjectTest
 	}
 	
 	/**
-	 * This method tests the startServer() method of the CoapServerManager class. It always returns a true
-	 */
-	@Test
-	public void testStartServer() 
-	{
-		//This method always returns a true because server side, there aren't any errors since this is only server creation and starting/stopping
-		assertEquals(this.coapServerManager.startServer(), true);		
-	}
-	
-	/**
 	 * This method tests the stopServer() method of the CoapServerManager class. It always returns a true
 	 */
 	@Test

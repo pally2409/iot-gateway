@@ -49,28 +49,39 @@ public class UbidotsClientConnector {
 		//Instantiate ConfigUtil to take care of API credentials
 		cUtil = new ConfigUtil();
 		
-		//Instantiate the API client using the user specific API key
-		api = new ApiClient(this.cUtil.getValue("ubidots.cloud", "apiKey"));
-	
-		//Instantiate MqttClientConnector for publishing temperature sensor readings and register a listener for actuator value changes
-		mqttClientConnector = new MqttClientConnector("ssl://" + this.cUtil.getValue("ubidots.cloud", "host") + ":" + "8883");
+		//Try to connect to ubidots using the variables from configuration file
+		try {
 		
-		//Get the data source for the constrained device
-		dataSource = api.getDataSource("iot-device");
+			//Instantiate the API client using the user specific API key
+			api = new ApiClient(this.cUtil.getValue("ubidots.cloud", "apiKey"));
 		
-		//Define the variable IDs for the TempSensor and TempActuator
-		TEMP_SENSOR_LABEL 		= this.cUtil.getValue("ubidots.cloud", "tempSensorLabel"); 	//TempSensor ID
-		HUMIDITY_SENSOR_ID		= this.cUtil.getValue("ubidots.cloud", "humiditySensorID"); //HumiditySensor ID
-		TEMP_ACTUATOR_LABEL 	= this.cUtil.getValue("ubidots.cloud", "tempActuatorLabel"); 	//TempActuator ID
+			//Instantiate MqttClientConnector for publishing temperature sensor readings and register a listener for actuator value changes
+			mqttClientConnector = new MqttClientConnector("ssl://" + this.cUtil.getValue("ubidots.cloud", "host") + ":" + "8883");
+			
+			//Get the data source for the constrained device
+			dataSource = api.getDataSource("iot-device");
+			
+			//Define the variable IDs for the TempSensor and TempActuator
+			TEMP_SENSOR_LABEL 		= this.cUtil.getValue("ubidots.cloud", "tempSensorLabel"); 	//TempSensor ID
+			HUMIDITY_SENSOR_ID		= this.cUtil.getValue("ubidots.cloud", "humiditySensorID"); //HumiditySensor ID
+			TEMP_ACTUATOR_LABEL 	= this.cUtil.getValue("ubidots.cloud", "tempActuatorLabel"); 	//TempActuator ID
+			
+			//Define the MQTT topic for Ubidots  
+			MQTT_TOPIC 				= this.cUtil.getValue("ubidots.cloud", "devicePath");
+			
+			//Set the socket factory obtained from the SSL certificate
+			mqttClientConnector.conOpt.setSocketFactory(certManagementUtil.loadCertificate(this.cUtil.getValue("ubidots.cloud", "certFile")));
+			
+			//Set the user name token for ubidots
+			mqttClientConnector.conOpt.setUserName(this.cUtil.getValue("ubidots.cloud", "userNameToken"));	
+		}
 		
-		//Define the MQTT topic for Ubidots  
-		MQTT_TOPIC 				= this.cUtil.getValue("ubidots.cloud", "devicePath");
-		
-		//Set the socket factory obtained from the SSL certificate
-		mqttClientConnector.conOpt.setSocketFactory(certManagementUtil.loadCertificate(this.cUtil.getValue("ubidots.cloud", "certFile")));
-		
-		//Set the user name token for ubidots
-		mqttClientConnector.conOpt.setUserName(this.cUtil.getValue("ubidots.cloud", "userNameToken"));
+		//If an error occurred especially on the pipeline, catch the error
+		catch(Exception e) {
+					
+				//Print the stack trace
+				e.printStackTrace();
+		}
 	}
 	
 	/*
